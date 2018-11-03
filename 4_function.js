@@ -36,14 +36,14 @@ console.log(avg); // 7
 // It is possible!
 
 /*
-This JavaScript feature is called "hoisting".
-In JavaScript, before the codes are executed, all normal function declarations
-(definition) are "hoisted" to the top of the current scope, so that it can be
-used later in the program.
-i.e., In the example above, before the codes are executed, JavaScript will
-automatically "hoist" the declaration (definition) of the function "calcAvg()"
-to the top of the global scope, and then execute the codes, so that the above
-codes are in effect rearranged by JavaScript to:
+This feature is called "hoisting".
+Before the codes are executed, all normal function declarations (definition) are
+"hoisted" to the top of the current scope, so that it can be used later in the
+program.
+i.e., In the example above, before the codes are executed, JavaScript engine
+will automatically "hoist" the declaration (definition) of the function
+"calcAvg()" to the top of the global scope, and then execute the codes, so that
+the above codes are in effect rearranged by JavaScript engine to:
 
 function calAvg(a, b) {
   return (a + b) / 2;
@@ -68,10 +68,10 @@ function greet() {
 greet();
 
 /*
-In the above example, before the codes are executed, JavaScript will
+In the above example, before the codes are executed, JavaScript engine will
 automatically "hoist" the declaration of the variable "greeting" to the top of
 the function scope, and then execute the codes, so that the above codes are in
-effect rearranged by JavaScript to:
+effect rearranged by JavaScript engine to:
 
 function greet() {
   var greeting;
