@@ -14,10 +14,10 @@ console.log('Type of an array: ' + typeof([123, true, 'any text'])); // Type of 
 
 // Special Data Values
 // null: "Value of nothing or totally empty"
-var x = null;
-console.log(null); // null
+let x = null;
+console.log(x); // null
 // undefined: "Absence of a value, not even a value of null"
-var y;
+let y;
 console.log(y); // undefined
 
 // Implicit Type Coercion
@@ -25,12 +25,13 @@ console.log('Hello' + 5 * 10); // Hello50
 // Evaluate 5 * 10 to 50, implicitly convert it to a string '50', and
 // concatenate it to 'Hello', resuling in 'Hello50'
 /*
-Note that when performing comparison using == and !=, first implicit type
-coercion is done, and then to perform the comparison
+Note that when performing equality check using == and !=, first implicit type
+coercion is done, and then to perform the equality check
 This may lead to quirky results,
 e.g., '1' ==  true -> true,
 so this is considered to be a BAD PRACTICE.
-Thus, to perform comparisons, we should use === and !==  for strict comparison,
-which checks both the type and the value of the two operands,
+Thus, to perform equality checks, we should use === and !==  for strict
+equality check, which checks both the type and the value of the two operands for
+equality,
 e.g., '1' === true -> false
 */
