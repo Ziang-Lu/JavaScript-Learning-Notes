@@ -53,7 +53,7 @@ let avg = calcAvg(5, 9);
 console.log(avg);
  */
 
-// "Hoisting" happens for variables, too.
+// ***** "Hoisting" happens for variables, too. *****
 
 function greet() {
   console.log(greeting); // In a function, use a variable before its declaration
