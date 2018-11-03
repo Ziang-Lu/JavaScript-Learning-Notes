@@ -1,6 +1,6 @@
-// Calculate the average of two numbers
+// ***** Normal Function Declaration *****
 
-let a = 5, b = 7;
+// Calculate the average of two numbers
 
 function add(x, y) {
   return x + y;
@@ -11,7 +11,7 @@ function divideByTwo(num) {
 }
 
 console.log(
-  'The average of ' + a + ' and ' + b + ' is ' + divideByTwo(add(a, b) + '.')
+  'The average of 5 and 7 is ' + divideByTwo(add(5, 7) + '.')
 );
 
 
@@ -23,7 +23,7 @@ function func() {
 console.log(func()); // undefined
 
 
-// ********** HOISTING **********
+// *** Hoisting ***
 
 let avg = calcAvg(5, 9); // Call a function before its declaration (definition)
 // Is it possible?
@@ -37,7 +37,7 @@ console.log(avg); // 7
 
 /*
 This JavaScript feature is called "hoisting".
-In JavaScript, before the codes are executed, all function declarations
+In JavaScript, before the codes are executed, all normal function declarations
 (definition) are "hoisted" to the top of the current scope, so that it can be
 used later in the program.
 i.e., In the example above, before the codes are executed, JavaScript will
@@ -53,7 +53,7 @@ let avg = calcAvg(5, 9);
 console.log(avg);
  */
 
-// ***** "Hoisting" happens for variables, too. *****
+// * "Hoisting" can happen for variables, too. *
 
 function greet() {
   console.log(greeting); // In a function, use a variable before its declaration
@@ -62,6 +62,7 @@ function greet() {
 
   // Output: undefined
   // It is possible!
+  // But only with "var" declarations but not "let" delcarations
 }
 
 greet();
@@ -78,7 +79,50 @@ function greet() {
   greeting = 'Hello!';
 }
  */
-
  // Note that the "hositing" for variables is very similar the C-style coding
  // convention, which means in each function, first declare all the variables,
  // and then start using them
+
+
+/*
+IMPORTANT!!!
+Due to "hoisting", we should DECLARE ALL FUNCTIONS AT THE TOP OF THE SCRIPT,
+and in each function, since we'll always use "let" declarations, we don't need
+to care "hoisting" for variables.
+ */
+
+
+// ***** Function Expression *****
+// (When a function is assigned to a variable)
+
+let catSays = function(count) {
+  let catWords = '';
+  for (let i = 0; i < count; ++i) {
+    catWords += 'meow ';
+  }
+  return catWords.trim();
+}
+
+console.log(catSays(3)) // meow meow meow
+
+/*
+In the above example, the right side of the "=" is an anonymous function in
+JavaScript, and this anonymous function is assigned to a variable "catSays".
+ */
+
+// We can also pass a function expression as an argument to another function
+// inline, as follows.
+
+function movie(displayFunc, movieName) {
+  displayFunc(movieName);
+}
+
+movie(function(movieName) {
+  console.log('My favorite movie is ' + movieName + '.');
+}, 'Finding Nemo')
+
+/*
+TRICKY!!!
+Function expressions are not "hoisted" since they involve variable assignment,
+so JavaScript will not interpret it until it reaches that line.
+ */

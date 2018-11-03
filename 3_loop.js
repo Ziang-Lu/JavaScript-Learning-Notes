@@ -1,4 +1,4 @@
-// 1. while
+// ***** while Loop *****
 
 // Imaginary FizzBuzz game
 let num = 1;
@@ -15,7 +15,7 @@ while (num <= 20) {
   ++num;
 }
 
-// 2. for
+// ***** for Loop *****
 
 // Print theater seats
 const numOfRows = 26;

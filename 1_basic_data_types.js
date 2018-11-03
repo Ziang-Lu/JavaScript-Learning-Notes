@@ -1,18 +1,18 @@
-// 1. number
+// ***** number *****
 console.log('Type of 123: ' + typeof(123)); // Type of 123: number
 console.log('2 / 0 = ' + 2 / 0); // 2 / 0 = Infinity
 console.log('0 / 0 = ' + 0 / 0); // 0 / 0 = NaN
 
-// 2. boolean
+// ***** boolean *****
 console.log('Type of true: ' + typeof(true)); // Type of true: boolean
 
-// 3. string
+// ***** string *****
 console.log("Type of 'any text': " + typeof('any text')); // Type of 'any text': string
 
-// 4. array
+// ***** array *****
 console.log('Type of an array: ' + typeof([123, true, 'any text'])); // Type of an array: object
 
-// Special Data Values
+// *** Special Data Values ***
 // null: "Value of nothing or totally empty"
 let x = null;
 console.log(x); // null
@@ -20,7 +20,8 @@ console.log(x); // null
 let y;
 console.log(y); // undefined
 
-// Implicit Type Coercion
+
+// *** Implicit Type Coercion ***
 console.log('Hello' + 5 * 10); // Hello50
 // Evaluate 5 * 10 to 50, implicitly convert it to a string '50', and
 // concatenate it to 'Hello', resuling in 'Hello50'
