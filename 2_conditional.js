@@ -6,7 +6,7 @@ let balance = 325.00;
 let checkBalance = true;
 if (checkBalance) {
   if (isActive && balance > 0) {
-      console.log('Your balance is $' + balance.toFixed(2) + '.');
+      console.log(`Your balance is $${balance.toFixed(2)}`);
   } else if (!isActive) {
       console.log('Your account is no longer active.');
   } else if (balance === 0) {
@@ -47,5 +47,5 @@ switch (month) {
     break;
 }
 if (days !== null) {
-  console.log('There are ' + days + ' days in ' + month + '.');
+  console.log(`There are ${days} days in ${month}.`);
 }

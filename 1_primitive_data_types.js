@@ -1,16 +1,16 @@
 // ***** number *****
-console.log('Type of 123: ' + typeof(123)); // Type of 123: number
-console.log('2 / 0 = ' + 2 / 0); // 2 / 0 = Infinity
-console.log('0 / 0 = ' + 0 / 0); // 0 / 0 = NaN
+console.log(`Type of 123: ${typeof 123}`); // Type of 123: number
+console.log(`2 / 0 = ${2 / 0}`); // 2 / 0 = Infinity
+console.log(`0 / 0 = ${0 / 0}`); // 0 / 0 = NaN
 
 // ***** boolean *****
-console.log('Type of true: ' + typeof(true)); // Type of true: boolean
+console.log(`Type of true: ${typeof true}`); // Type of true: boolean
 
 // ***** string *****
-console.log("Type of 'any text': " + typeof('any text')); // Type of 'any text': string
+console.log(`Type of 'any text': ${typeof 'any text'}`); // Type of 'any text': string
 
 // ***** array *****
-console.log('Type of an array: ' + typeof([123, true, 'any text'])); // Type of an array: object
+console.log(`Type of an array: ${typeof [123, true, 'any text']}`); // Type of an array: object
 
 // *** Special Data Values ***
 // null: "Value of nothing or totally empty"

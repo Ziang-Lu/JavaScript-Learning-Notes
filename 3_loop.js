@@ -22,6 +22,6 @@ const numOfRows = 26;
 const seatsPerRow = 100;
 for (let row = 0; row < numOfRows; ++row) {
   for (let seat = 0; seat < seatsPerRow; ++seat) {
-    console.log(row + '-' + seat);
+    console.log(`${row}-${seat}`);
   }
 }

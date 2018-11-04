@@ -10,10 +10,7 @@ function divideByTwo(num) {
   return num / 2;
 }
 
-console.log(
-  'The average of 5 and 7 is ' + divideByTwo(add(5, 7) + '.')
-);
-
+console.log(`The average of 5 and 7 is ${divideByTwo(add(5, 7))}`);
 
 // Note that in a function, if we don't explicit return a value, the default
 // return value is 'undefined'
@@ -118,7 +115,7 @@ function movie(displayFunc, movieName) {
 }
 
 movie(function(movieName) {
-  console.log('My favorite movie is ' + movieName + '.');
+  console.log(`My favorate movie is ${movieName}.`);
 }, 'Finding Nemo')
 
 /*
