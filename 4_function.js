@@ -1,4 +1,5 @@
 // ***** Normal Function Declaration *****
+console.log('***** Normal Function Declaration *****');
 
 // Calculate the average of two numbers
 
@@ -18,6 +19,8 @@ function func() {
   console.log("This function doesn't return anything.");
 }
 console.log(func()); // undefined
+
+console.log();
 
 
 // *** Hoisting ***
@@ -88,19 +91,20 @@ and in each function, since we'll always use "let" declarations, we don't need
 to care "hoisting" for variables.
  */
 
+console.log();
+
 
 // ***** Function Expression *****
+console.log('***** Function Expression *****');
 // (When a function is assigned to a variable)
+console.log('(When a function is assigned to a variable)')
 
-let catSays = function(count) {
-  let catWords = '';
-  for (let i = 0; i < count; ++i) {
-    catWords += 'meow ';
-  }
+const catSays = function(count) {
+  let catWords = 'meow '.repeat(count);
   return catWords.trim();
 }
 
-console.log(catSays(3)) // meow meow meow
+console.log(catSays(5)) // meow meow meow meow meow
 
 /*
 In the above example, the right side of the "=" is an anonymous function in

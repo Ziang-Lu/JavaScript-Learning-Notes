@@ -1,4 +1,5 @@
 // ***** while Loop *****
+console.log('***** while Loop *****');
 
 // Imaginary FizzBuzz game
 let num = 1;
@@ -15,7 +16,11 @@ while (num <= 20) {
   ++num;
 }
 
+console.log();
+
+
 // ***** for Loop *****
+console.log('***** for Loop *****');
 
 // Print theater seats
 const numOfRows = 26;

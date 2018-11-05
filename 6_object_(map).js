@@ -26,8 +26,8 @@ let umbrella = {
   }
 };
 
-console.log(typeof(unbrella)); // object
+console.log(typeof umbrella); // object
 console.log(umbrella);
 // Dot notation VS Bracket notation
 console.log(umbrella.color); // Equivalent to umbrella['color']
-console.log(umbrella.open()); // Equivalent to umbrella['open]()
+console.log(umbrella.open()); // Equivalent to umbrella['open']()

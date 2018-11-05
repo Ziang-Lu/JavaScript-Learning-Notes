@@ -1,4 +1,5 @@
 // ***** if ... else if ... else Statement*****
+console.log('***** if ... else if ... else Statement *****');
 
 // Logic of checking the account balance at an ATM
 let isActive = true;
@@ -18,7 +19,11 @@ if (checkBalance) {
   console.log('Thank you. Have a nice day!');
 }
 
+console.log();
+
+
 // ***** switch Statement *****
+console.log('***** switch Statement *****');
 
 // Check the number of days for a specific month
 let month = 'Nov';
