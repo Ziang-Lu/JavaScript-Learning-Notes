@@ -3,10 +3,19 @@ console.log('***** Normal Function Declaration *****');
 
 // Calculate the average of two numbers
 
+/**
+ * Adds the given two numbers and returns the result.
+ * @param {number} x first addend
+ * @param {number} y second addend
+ */
 function add(x, y) {
   return x + y;
 }
 
+/**
+ * Divides the given number by 2 and returns the result.
+ * @param {number} num given number
+ */
 function divideByTwo(num) {
   return num / 2;
 }
@@ -15,6 +24,9 @@ console.log(`The average of 5 and 7 is ${divideByTwo(add(5, 7))}`);
 
 // Note that in a function, if we don't explicit return a value, the default
 // return value is 'undefined'
+/**
+ * A dummy function that don't explicitly return a value.
+ */
 function func() {
   console.log("This function doesn't return anything.");
 }
@@ -28,6 +40,11 @@ console.log();
 let avg = calcAvg(5, 9); // Call a function before its declaration (definition)
 // Is it possible?
 
+/**
+ * Calculates the average between the given two numbers.
+ * @param {number} a first number
+ * @param {number} b second number
+ */
 function calcAvg(a, b) {
   return (a + b) / 2;
 }
@@ -55,6 +72,9 @@ console.log(avg);
 
 // * "Hoisting" can happen for variables, too. *
 
+/**
+ * Prints a greeting message.
+ */
 function greet() {
   console.log(greeting); // In a function, use a variable before its declaration
   var greeting = 'Hello!';
@@ -99,6 +119,10 @@ console.log('***** Function Expression *****');
 // (When a function is assigned to a variable)
 console.log('(When a function is assigned to a variable)')
 
+/**
+ * Returns the given number of 'meow'.
+ * @param {number} count number of 'meow'
+ */
 const catSays = function(count) {
   let catWords = 'meow '.repeat(count);
   return catWords.trim();
@@ -114,8 +138,13 @@ JavaScript, and this anonymous function is assigned to a variable "catSays".
 // We can also pass a function expression as an argument to another function
 // inline, as follows.
 
-function movie(displayFunc, movieName) {
-  displayFunc(movieName);
+/**
+ * Applies the given function on the given movie.
+ * @param {function} movieFunc function to be applied on the given movie
+ * @param {string} movieName given movie
+ */
+function movie(movieFunc, movieName) {
+  movieFunc(movieName);
 }
 
 movie(function(movieName) {

@@ -26,8 +26,16 @@ let umbrella = {
   }
 };
 
-console.log(typeof umbrella); // object
 console.log(umbrella);
+console.log(`Type of umbrella: ${typeof umbrella}`); // object
+
+console.log();
+
 // Dot notation VS Bracket notation
-console.log(umbrella.color); // Equivalent to umbrella['color']
+
+console.log(`Accessing 'color' attribute: ${umbrella.color}`); // pink
+// Equivalent to umbrella['color']
+
+console.log('Invoking open() method:');
 console.log(umbrella.open()); // Equivalent to umbrella['open']()
+// Successfully opened the umbrella!

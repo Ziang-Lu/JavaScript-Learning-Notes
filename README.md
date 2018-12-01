@@ -1,5 +1,9 @@
 # JavaScript Learning Notes
 
+These repo contains course notes in the following courses
+
+* Intro to JavaScript on Udacity
+
 <br>
 
 ## License

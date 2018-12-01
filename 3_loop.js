@@ -1,18 +1,18 @@
 // ***** while Loop *****
 console.log('***** while Loop *****');
 
-// Imaginary FizzBuzz game
+// Variant FizzBuzz game
 let num = 1;
 while (num <= 20) {
+  let s = num.toString();
   if ((num % 3 === 0) && (num % 5 === 0)) {
-    console.log('JuliaJames');
+    s += ': JuliaJames';
   } else if (num % 3 === 0) {
-    console.log('Julia');
+    s += ': Julia';
   } else if (num % 5 === 0) {
-    console.log('James');
-  } else {
-    console.log(num);
+    s += ': James';
   }
+  console.log(s);
   ++num;
 }
 
@@ -22,9 +22,12 @@ console.log();
 // ***** for Loop *****
 console.log('***** for Loop *****');
 
-// Print theater seats
-const numOfRows = 26;
-const seatsPerRow = 100;
+// Print movie theater seats
+const numOfRows = 15;
+const seatsPerRow = 20;
+console.log(
+    `Number of rows: ${numOfRows}, Number of seats per row: ${seatsPerRow}`
+)
 for (let row = 0; row < numOfRows; ++row) {
   for (let seat = 0; seat < seatsPerRow; ++seat) {
     console.log(`${row}-${seat}`);

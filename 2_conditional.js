@@ -5,6 +5,9 @@ console.log('***** if ... else if ... else Statement *****');
 let isActive = true;
 let balance = 325.00;
 let checkBalance = true;
+console.log(
+    `isActive=${isActive}, balance=${balance}, checkBalance=${checkBalance}`
+);
 if (checkBalance) {
   if (isActive && balance > 0) {
       console.log(`Your balance is $${balance.toFixed(2)}`);
