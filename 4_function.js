@@ -1,20 +1,23 @@
+'use strict';
+
 // ***** Normal Function Declaration *****
-console.log('***** Normal Function Declaration *****');
 
 // Calculate the average of two numbers
 
 /**
- * Adds the given two numbers and returns the result.
+ * Adds the given two numbers.
  * @param {number} x first addend
  * @param {number} y second addend
+ * @returns {number} sum of the given two numbers
  */
 function add(x, y) {
   return x + y;
 }
 
 /**
- * Divides the given number by 2 and returns the result.
+ * Divides the given number by 2.
  * @param {number} num given number
+ * @returns {number} given number divided by 2
  */
 function divideByTwo(num) {
   return num / 2;
@@ -24,9 +27,6 @@ console.log(`The average of 5 and 7 is ${divideByTwo(add(5, 7))}`);
 
 // Note that in a function, if we don't explicit return a value, the default
 // return value is 'undefined'
-/**
- * A dummy function that don't explicitly return a value.
- */
 function func() {
   console.log("This function doesn't return anything.");
 }
@@ -37,13 +37,14 @@ console.log();
 
 // *** Hoisting ***
 
-let avg = calcAvg(5, 9); // Call a function before its declaration (definition)
+const avg = calcAvg(5, 9); // Call a function before its declaration (definition)
 // Is it possible?
 
 /**
  * Calculates the average between the given two numbers.
  * @param {number} a first number
  * @param {number} b second number
+ * @returns {number} average of the given two numbers.
  */
 function calcAvg(a, b) {
   return (a + b) / 2;
@@ -70,86 +71,42 @@ let avg = calcAvg(5, 9);
 console.log(avg);
  */
 
-// * "Hoisting" can happen for variables, too. *
-
-/**
- * Prints a greeting message.
- */
-function greet() {
-  console.log(greeting); // In a function, use a variable before its declaration
-  var greeting = 'Hello!';
-  // Is it possible?
-
-  // Output: undefined
-  // It is possible!
-  // But only with "var" declarations but not "let" delcarations
-}
-
-greet();
-
-/*
-In the above example, before the codes are executed, JavaScript engine will
-automatically "hoist" the declaration of the variable "greeting" to the top of
-the function scope, and then execute the codes, so that the above codes are in
-effect rearranged by JavaScript engine to:
-
-function greet() {
-  var greeting;
-  console.log(greeting);
-  greeting = 'Hello!';
-}
- */
- // Note that the "hositing" for variables is very similar the C-style coding
- // convention, which means in each function, first declare all the variables,
- // and then start using them
-
-
-/*
-IMPORTANT!!!
-Due to "hoisting", we should DECLARE ALL FUNCTIONS AT THE TOP OF THE SCRIPT,
-and in each function, since we'll always use "let" declarations, we don't need
-to care "hoisting" for variables.
- */
-
 console.log();
 
 
 // ***** Function Expression *****
-console.log('***** Function Expression *****');
 // (When a function is assigned to a variable)
-console.log('(When a function is assigned to a variable)')
 
-/**
- * Returns the given number of 'meow'.
- * @param {number} count number of 'meow'
- */
-const catSays = function(count) {
-  let catWords = 'meow '.repeat(count);
-  return catWords.trim();
-}
+// Define an anonymous function, and assign it to a variable
+// Approach 1
+// const anonymousAdd = function(x, y) {
+//   return x + y;
+// }
+// Approach 2: "Arrow function"
+const anonymousAdd = (x, y) => x + y;
+console.log(anonymousAdd(5, 7)); // 12
 
-console.log(catSays(5)) // meow meow meow meow meow
-
-/*
-In the above example, the right side of the "=" is an anonymous function in
-JavaScript, and this anonymous function is assigned to a variable "catSays".
- */
-
-// We can also pass a function expression as an argument to another function
-// inline, as follows.
+// We can pass a function expression as an argument to another function inline,
+// as follows.
 
 /**
  * Applies the given function on the given movie.
- * @param {function} movieFunc function to be applied on the given movie
- * @param {string} movieName given movie
+ * @param {*} movieFunc function to be applied on the given movie
+ * @param {string} movie given movie
+ * @returns {*}
  */
-function movie(movieFunc, movieName) {
-  movieFunc(movieName);
-}
+const movieProcessing = (movieFunc, movie='Titanic') => movieFunc(movie);
 
-movie(function(movieName) {
-  console.log(`My favorate movie is ${movieName}.`);
-}, 'Finding Nemo')
+/**
+ * Prints the given favorite movie.
+ * @param {string} movie given favorite movie
+ */
+const printFavoriteMovie = (movie) => console.log(
+  `My favorite movie is ${movie}`
+);
+
+movieProcessing(printFavoriteMovie, 'Finding Nemo'); // My favorate movie is Finding Nemo.
+movieProcessing(printFavoriteMovie); // My favorate movie is Titanic.
 
 /*
 TRICKY!!!

@@ -1,3 +1,5 @@
+'use strict';
+
 /*
 IMPORTANT!!!
 An object in JavaScript is essentially a MAP, which is just a group of key-value
@@ -28,14 +30,26 @@ let umbrella = {
 
 console.log(umbrella);
 console.log(`Type of umbrella: ${typeof umbrella}`); // object
-
 console.log();
 
-// Dot notation VS Bracket notation
+// *** Dot notation VS Bracket notation ***
 
-console.log(`Accessing 'color' attribute: ${umbrella.color}`); // pink
-// Equivalent to umbrella['color']
+console.log(`Accessing 'color' attribute: ${umbrella.color}`); // Equivalent to umbrella['color']
+// pink
 
 console.log('Invoking open() method:');
 console.log(umbrella.open()); // Equivalent to umbrella['open']()
 // Successfully opened the umbrella!
+
+console.log();
+
+// *** Keys & Values ***
+console.log(Object.keys(umbrella)); // ['color', 'isOpen', 'open', 'close']
+console.log(Object.values(umbrella)); // ['pink', true, [Function: open], [Function: close]]
+console.log()
+
+// *** JSON Convertion ***
+converted = JSON.stringify(umbrella);
+console.log(converted);
+parsed = JSON.parse(converted);
+console.log(parsed);

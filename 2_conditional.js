@@ -1,10 +1,11 @@
+'use strict';
+
 // ***** if ... else if ... else Statement*****
-console.log('***** if ... else if ... else Statement *****');
 
 // Logic of checking the account balance at an ATM
+let checkBalance = true;
 let isActive = true;
 let balance = 325.00;
-let checkBalance = true;
 console.log(
     `isActive=${isActive}, balance=${balance}, checkBalance=${checkBalance}`
 );
@@ -21,14 +22,11 @@ if (checkBalance) {
 } else {
   console.log('Thank you. Have a nice day!');
 }
-
 console.log();
 
-
 // ***** switch Statement *****
-console.log('***** switch Statement *****');
 
-// Check the number of days for a specific month
+// Check the number of days for a specific month (not including leap year)
 let month = 'Nov';
 let days = null;
 switch (month) {

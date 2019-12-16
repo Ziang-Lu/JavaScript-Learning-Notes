@@ -1,5 +1,6 @@
+'use strict';
+
 // ***** while Loop *****
-console.log('***** while Loop *****');
 
 // Variant FizzBuzz game
 let num = 1;
@@ -20,7 +21,6 @@ console.log();
 
 
 // ***** for Loop *****
-console.log('***** for Loop *****');
 
 // Print movie theater seats
 const numOfRows = 15;
