@@ -200,7 +200,7 @@ console.log();
 let myArray = [1, 2, 3, 4, 5];
 console.log('Original array:');
 console.log(myArray); // [1, 2, 3, 4, 5]
-const newArray = myArray.map(num => num + 100);
+const newArray = myArray.map((num) => num + 100);
 console.log('New array:');
 console.log(newArray); // [101, 102, 103, 104, 105]
 console.log();
@@ -210,6 +210,6 @@ console.log();
 myArray = [1, 2, 3, 4, 5];
 console.log('Original array:');
 console.log(myArray);
-const filtered = myArray.filter(num => num > 3);
+const filtered = myArray.filter((num) => num > 3);
 console.log('New array:');
 console.log(filtered); // [4, 5]
