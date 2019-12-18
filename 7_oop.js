@@ -29,14 +29,14 @@
 // *** ES6 Way ***
 
 // Essentially, this is just syntax sugar, that under the hood does the same
-// thing as above
+// thing as above.
 
 /**
  * Person class.
  */
 class Person {
   /**
-   * Returns the top boy name and girl name.
+   * Static method to return the top boy name and girl name.
    * @returns {Array} top boy name and girl name as an array
    */
   static topNames() {
@@ -45,9 +45,9 @@ class Person {
 
   /**
    * Constructor with parameter.
-   * @param {string} firstName first name of this person
-   * @param {string} lastName last name of this person
-   * @param {string} dateOfBirth date of birth of this person
+   * @param {string} firstName first name of the person
+   * @param {string} lastName last name of the person
+   * @param {string} dateOfBirth date of birth of the person as a string
    */
   constructor(firstName, lastName, dateOfBirth) {
     this.firstName = firstName;
