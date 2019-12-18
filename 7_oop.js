@@ -26,7 +26,6 @@
 // Student.prototype = Object.create(Person.prototype)
 // Student.prototype.constructor = Student
 
-
 // *** ES6 Way ***
 
 // Essentially, this is just syntax sugar, that under the hood does the same

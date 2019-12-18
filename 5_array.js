@@ -7,7 +7,6 @@ console.log(Array.isArray(mixedData)); // true
 console.log(`Type: ${typeof mixedData}`); // object
 console.log();
 
-
 // *** Array.prototype.length Property ***
 
 console.log(`Length: ${mixedData.length}`); // 6
@@ -29,11 +28,10 @@ console.log(mixedData); // [1, true, 'abcd', 'all the strings']
 // automatically return "undefined".
 console.log(
   "Accessing an index in an array that doesn't exist: " +
-  `${mixedData[mixedData.length]}`
+    `${mixedData[mixedData.length]}`
 ); // undefined
 
 console.log();
-
 
 // *** Array.prototype.slice() Method ***
 console.log('Original:');
@@ -46,7 +44,7 @@ console.log(sliced); // [true, 'abcd']
 // original array is not modified.
 console.log(
   'Whether the sliced copy is a shallow copy of the original array: ' +
-  `${Object.is(sliced, mixedData)}`
+    `${Object.is(sliced, mixedData)}`
 ); // false
 console.log();
 
@@ -57,10 +55,9 @@ console.log(mixedData); // [1, true, 'abcd', 'all the strings']
 // (forwards)
 console.log(
   "Index of the first occurrence of 'abcd' starting from index 1: " +
-  `${mixedData.indexOf('abcd', 1)}`
+    `${mixedData.indexOf('abcd', 1)}`
 ); // 2
 console.log();
-
 
 // *** Array.prototype.lastIndexOf() Method ***
 console.log('Original:');
@@ -69,10 +66,9 @@ console.log(mixedData); // [1, true, 'abc', 'all the strings']
 // (backwards)
 console.log(
   'Index of the last occurrence of 1 starting from index 2: ' +
-  `${mixedData.lastIndexOf(1, 2)}`
+    `${mixedData.lastIndexOf(1, 2)}`
 ); // 0
 console.log();
-
 
 // *** Array.prototype.push() Method ***
 console.log('Original:');
@@ -83,7 +79,6 @@ console.log(mixedData); // [1, true, 'abcd', 'all the strings', 'basketball', 's
 console.log(`New length: ${mixedData.length}`); // 6
 console.log();
 
-
 // *** Array.prototype.pop() Method ***
 console.log('Original:');
 console.log(mixedData); // [1, true, 'abcd', 'all the strings', 'basketball', 'soccer']
@@ -93,16 +88,14 @@ console.log(mixedData); // [1, true, 'abcd', 'all the strings', 'basketball']
 console.log(`Popped last element: ${lastElem}`); // soccer
 console.log();
 
-
 // *** Array.prototype.unshift() Method ***
 console.log('Original:');
 console.log(mixedData); // [1, true, 'abcd', 'all the strings', 'basketball', 'soccer']
 newLength = mixedData.unshift('new first element');
-console.log('After appending on the left by unshift() method:')
+console.log('After appending on the left by unshift() method:');
 console.log(mixedData); // ['new first element', 1, true, 'abcd', 'all the strings', 'basketball']
 console.log(`New length: ${newLength}`); // 6
 console.log();
-
 
 // *** Array.prototype.shift() Method ***
 console.log('Original:');
@@ -112,7 +105,6 @@ console.log('After popping from the left by shift() method:');
 console.log(mixedData); // [1, true, 'abcd', 'all the strings', 'basketball']
 console.log(`Popped first element: ${firstElem}`); // new first element
 console.log();
-
 
 // *** Array.prototype.splice() Method ***
 
@@ -135,7 +127,6 @@ console.log(removed); // [42]
 
 console.log();
 
-
 // *** Array.prototype.reverse() Method ***
 console.log('Original:');
 console.log(mixedData); // [1, true, 'abcd', 'all the strings', 'basketball']
@@ -146,10 +137,9 @@ console.log(reversedRef); // [basketball', 'all the strings', 'abcd', true, 1]
 // shadows "mixedData".
 console.log(
   'Whether the returned reference is a new reference to the original array: ' +
-  `${Object.is(reversedRef, mixedData)}`
+    `${Object.is(reversedRef, mixedData)}`
 ); // true
 console.log();
-
 
 // *** Array.prototype.sort() Method ****
 
@@ -167,7 +157,7 @@ console.log('After sorting:');
 console.log(sortedCopy); // [1, 10, 2, 4, 5, 7, 8, undefined] (Note that all the "undefined" elements are sorted to the end of the array)
 console.log(
   'Whether the returned reference is a new reference to the original array: ' +
-  `${Object.is(sortedCopy, mixedData)}`
+    `${Object.is(sortedCopy, mixedData)}`
 ); // false
 
 // To sort the number array in ascending order, we need to pass in our own
@@ -179,7 +169,6 @@ console.log('After sorting using compare function:');
 console.log(sortedCopy); // [1, 2, 4, 5, 7, 8, 10, undefined]
 
 console.log();
-
 
 // *** Array.prototype.forEach() Method ***
 console.log('The array:');
@@ -195,21 +184,19 @@ mixedData.forEach((val, idx) => console.log(`Logged: [${idx}] ${val}`));
 
 console.log();
 
-
 // *** Array.prototype.map() Method ***
 let myArray = [1, 2, 3, 4, 5];
 console.log('Original array:');
 console.log(myArray); // [1, 2, 3, 4, 5]
-const newArray = myArray.map((num) => num + 100);
+const newArray = myArray.map(num => num + 100);
 console.log('New array:');
 console.log(newArray); // [101, 102, 103, 104, 105]
 console.log();
-
 
 // *** Array.prototype.filter() Method ***
 myArray = [1, 2, 3, 4, 5];
 console.log('Original array:');
 console.log(myArray);
-const filtered = myArray.filter((num) => num > 3);
+const filtered = myArray.filter(num => num > 3);
 console.log('New array:');
 console.log(filtered); // [4, 5]

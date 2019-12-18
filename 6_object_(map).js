@@ -46,7 +46,7 @@ console.log();
 // *** Keys & Values ***
 console.log(Object.keys(umbrella)); // ['color', 'isOpen', 'open', 'close']
 console.log(Object.values(umbrella)); // ['pink', true, [Function: open], [Function: close]]
-console.log()
+console.log();
 
 // *** JSON Convertion ***
 converted = JSON.stringify(umbrella);

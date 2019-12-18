@@ -4,8 +4,11 @@ These repo contains course notes in the following courses
 
 * Intro to JavaScript on *Udacity*
 * Node.js crash course on YouTube https://www.youtube.com/watch?v=fBNz5xF-Kx4
+* TypeScript crash course on YouTube https://www.youtube.com/watch?v=rAy_3SIqT-E
 
 <br>
+
+## JavaScript Basics
 
 1. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/1_primitive_data_types.js">Primitive Data Types</a>
 2. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/2_conditional.js">Conditional</a>
@@ -17,7 +20,7 @@ These repo contains course notes in the following courses
 
 <br>
 
-## Node.js Crash Course
+## Node.js Runtime
 
 ```bash
 $ cd node-crash-course
@@ -51,9 +54,15 @@ which automatically "automatically restarts the node application when file chang
 
 So when in development, instead of running `node index`,  we can simply do `node run-script dev` or simply `node run dev`, which will in turn calls `nodemon index`.
 
+<br>
+
 ***
 
 ### JavaScript Linting
+
+`ESLint` is responsible for checking syntax errors and problems, while `Prettier` for auto-formatting our JavaScript codes.
+
+#### Global Settings
 
 * Install `ESLint` and `Prettier` globally if not already installed
 
@@ -61,22 +70,55 @@ So when in development, instead of running `node index`,  we can simply do `node
   $ npm install -g eslint prettier
   ```
 
-  `ESLint` is responsible for checking syntax errors and problems, leaving `Prettier` for auto-formatting our JavaScript codes.
-
 * Install some additional dependencies
 
   ```bash
   $ npm install -g eslint-plugin-prettier eslint-config-prettier eslint-plugin-node eslint-config-node
   ```
 
-* In the project directory, generate the configuration file
+#### `Node.js` Project Settings
+
+WIthin the project directory,
+
+* Install `eslint-config-airbnb-base`, which provides the `,eslintrc` file for Airbnb style guide.
+
+  ```bash
+  $ npx install-peerdeps --dev eslint-config-airbnb-base
+  # or
+  $ npm install -D eslint-config-import eslint-config-airbnb-base
+  
+  # Note:
+  # May need to do the folliowing as well
+  $ npm install --dev eslint prettier eslint-plugin-prettier eslint-config-prettier eslint-plugin-node eslint-config-node
+  ```
+
+* Generate a `.eslintrc.json` file
 
   ```bash
   $ eslint --init
-  # Generates a ".eslintrc.js" file
   ```
 
-  *Note: Do NOT select `Enforce code style` when doing `eslint --init` and generating `.eslintrc.js`, since we'll use `Prettier` to auto-format our JavaScript codes*
+  Replace it with the following:
+
+  ```json
+  {
+    "extends": ["airbnb-base", "prettier"],
+    "plugins": ["prettier"],
+    "rules": {
+      "class-methods-use-this": "off",
+      "func-names": "off",
+      "no-console": "off",
+      "no-unused-vars": "warn",
+      "object-shorthand": "off",
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true
+        }
+      ]
+    }
+  }
+  ```
 
 * For VSCode integration, install `ESLint` and `Prettier` extensions, and use `shift + option + F` to set `prettier` as the default code formatter.
 

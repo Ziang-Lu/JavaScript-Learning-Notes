@@ -17,7 +17,7 @@ console.log();
 // ***** array *****
 console.log(
   `Type of [123, true, "any text"]: ${typeof [123, true, 'any text']}`
-) // object
+); // object
 console.log();
 
 // *** Special Data Values ***
@@ -28,7 +28,6 @@ console.log(x); // null
 let y;
 console.log(y); // undefined
 console.log();
-
 
 // *** Implicit Type Coercion ***
 console.log('Hello' + 5 * 10); // Hello50

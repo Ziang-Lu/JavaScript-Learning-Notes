@@ -34,7 +34,6 @@ console.log(func()); // undefined
 
 console.log();
 
-
 // *** Hoisting ***
 
 const avg = calcAvg(5, 9); // Call a function before its declaration (definition)
@@ -73,7 +72,6 @@ console.log(avg);
 
 console.log();
 
-
 // ***** Function Expression *****
 // (When a function is assigned to a variable)
 
@@ -95,15 +93,14 @@ console.log(anonymousAdd(5, 7)); // 12
  * @param {string} movie given movie
  * @returns {*}
  */
-const movieProcessing = (movieFunc, movie='Titanic') => movieFunc(movie);
+const movieProcessing = (movieFunc, movie = 'Titanic') => movieFunc(movie);
 
 /**
  * Prints the given favorite movie.
  * @param {string} movie given favorite movie
  */
-const printFavoriteMovie = (movie) => console.log(
-  `My favorite movie is ${movie}`
-);
+const printFavoriteMovie = movie =>
+  console.log(`My favorite movie is ${movie}`);
 
 movieProcessing(printFavoriteMovie, 'Finding Nemo'); // My favorate movie is Finding Nemo.
 movieProcessing(printFavoriteMovie); // My favorate movie is Titanic.
