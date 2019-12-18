@@ -3,5 +3,9 @@
 # Node modules
 node_modules/
 
+# Sample folder & files
+*.txt
+test/
+
 # Project files
 .vscode/
