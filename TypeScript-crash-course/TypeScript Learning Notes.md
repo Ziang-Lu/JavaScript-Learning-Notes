@@ -1,5 +1,7 @@
 # TypeScript Learning Notes
 
+## TypeScript Basics
+
 * Superset of JavaScript, but additionally offers
   * **Static type checking**
     * <u>Completely optional</u>
@@ -23,6 +25,8 @@
 
 <br>
 
+## Compile to JavaScript
+
 ```bash
 $ tsc --init
 # Generates "tsconfig.json"
@@ -34,8 +38,10 @@ Change to
 "target": "es2015"
 ```
 
+<br>
+
 ```bash
-$ tsc <filename>
-$ tsc -w <filename>  # Watch mode: Every
+$ tsc sample.ts
+$ tsc -w sample.ts  # Watch mode: Every time "sample.ts" file is modified, auto-generate the corresponding "sample.js" file
 ```
 

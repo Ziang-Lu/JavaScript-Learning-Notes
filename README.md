@@ -22,6 +22,13 @@ These repo contains course notes in the following courses
 
 ## Node.js Runtime
 
+**Single-threaded** + **Event-driven model => Non-blocking I/O model**
+
+**-> 只执行I/O请求, 而不等待I/O结果 => 大部分功能靠callback function实现**
+
+* <u>由于是asynchronous I/O model, 可以支持tens of thousands concurrent connections.</u>
+* Optimizes throughput & scalability for I/O-bound applications
+
 ```bash
 $ cd node-crash-course
 
