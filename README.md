@@ -22,22 +22,62 @@ These repo contains course notes in the following courses
 
 ## Node.js Runtime
 
+### Basics
+
 **Single-threaded** + **Event-driven model => Non-blocking I/O model**
 
 **-> 只执行I/O请求, 而不等待I/O结果 => 大部分功能靠callback function实现**
 
+<img src="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/node-crash-course/Node.js%20Event%20Loop.png?raw=true" width="200px">
+
 * <u>由于是asynchronous I/O model, 可以支持tens of thousands concurrent connections.</u>
 * Optimizes throughput & scalability for I/O-bound applications
+
+<br>
+
+### Installation
+
+Node installations and versions are managed by NVM (Node Version Manager).
+
+* Install NVM
+
+  ```bash
+  $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+  ```
+
+* Add the following to `.bashrc`/`.zshrc`
+
+  ```bash
+  # Setting for NVM (Node Version Manager)
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  ```
+
+* Install Node through NVM
+
+  ```bash
+  $ nvm install node  # Install the latest version
+  
+  # Verify that Node has been installed:
+  $ nvm which current
+  # /Users/Ziang_Lu/.nvm/versions/node/v13.5.0/bin/node
+  $ node --version
+  # 13.5.0
+  ```
+
+<br>
+
+### Project Environment Setup
 
 ```bash
 $ cd node-crash-course
 
 $ npm init
-# Generates "package.json", similar to "Pipfile"
+# Generates "package.json", which is similar to "Pipfile"
 
 $ npm install uuid
-$ npm install -D nodemon  # Install as development dependency
-# Generates "package-lock.json" if not exists, similar to "Pipfile.lock"
+# Generates "package-lock.json" if not exists, which is similar to "Pipfile.lock"
 
 # On a new machine, use "package.json" to reinstall the dependencies
 $ npm install  # Similar to "pipenv install"
@@ -46,7 +86,7 @@ $ npm install  # Similar to "pipenv install"
 For the ease of development, install `nodemon`
 
 ```bash
-$ npm install -D nodemon
+$ npm install -D nodemon  # Install as development dependency
 ```
 
 which automatically "automatically restarts the node application when file changes in the directory are detected", and then add the following to `package.json`:
@@ -69,35 +109,9 @@ So when in development, instead of running `node index`,  we can simply do `node
 
 `ESLint` is responsible for checking syntax errors and problems, while `Prettier` for auto-formatting our JavaScript codes.
 
-#### Global Settings
+**Node Project Settings**
 
-* Install `ESLint` and `Prettier` globally if not already installed
-
-  ```bash
-  $ npm install -g eslint prettier
-  ```
-
-* Install some additional dependencies
-
-  ```bash
-  $ npm install -g eslint-plugin-prettier eslint-config-prettier eslint-plugin-node eslint-config-node
-  ```
-
-#### `Node.js` Project Settings
-
-WIthin the project directory,
-
-* Install `eslint-config-airbnb-base`, which provides the `,eslintrc` file for Airbnb style guide.
-
-  ```bash
-  $ npx install-peerdeps --dev eslint-config-airbnb-base
-  # or
-  $ npm install -D eslint-config-import eslint-config-airbnb-base
-  
-  # Note:
-  # May need to do the folliowing as well
-  $ npm install --dev eslint prettier eslint-plugin-prettier eslint-config-prettier eslint-plugin-node eslint-config-node
-  ```
+* Install all the necessary packages as in `package.json`
 
 * Generate a `.eslintrc.json` file
 
@@ -105,12 +119,16 @@ WIthin the project directory,
   $ eslint --init
   ```
 
-  Replace it with the following:
-
   ```json
   {
-    "extends": ["airbnb-base", "prettier"],
-    "plugins": ["prettier"],
+    "extends": [
+      "airbnb-base",
+      "prettier",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": [
+      "prettier"
+    ],
     "rules": {
       "class-methods-use-this": "off",
       "func-names": "off",

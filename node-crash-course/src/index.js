@@ -15,8 +15,7 @@ const txtLogger = new MyLogger();
 txtLogger.on('message', data => {
   fs.appendFile(
     path.join(__dirname, 'logs.txt'),
-    JSON.stringify(data, null, 2),
-    null
+    JSON.stringify(data, null, 2)
   );
 });
 

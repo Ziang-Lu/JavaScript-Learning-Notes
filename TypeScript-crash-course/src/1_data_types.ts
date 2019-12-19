@@ -12,8 +12,7 @@ myBool = true;
 
 // array
 let strArr: string[];
-let strArr2: Array<string>;
-strArr = ['Hello', 'World']
+strArr = ['Hello', 'World'];
 
 // null
 let myNull: null;

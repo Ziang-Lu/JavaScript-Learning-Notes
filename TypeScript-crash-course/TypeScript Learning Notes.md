@@ -25,11 +25,29 @@
 
 <br>
 
+***
+
+### TypeScript Linting
+
+Following the fules to lint plain JavaScript codes, plus the following:
+
+```bash
+$ npm install -g @typescript-eslint/parser @typescript-eslint/eslint-plugin
+
+$ npx install-peerdeps --dev eslint-config-typescript-airbnb-base
+```
+
+to add additional dependencies to `package.json`
+
+***
+
+<br>
+
 ## Compile to JavaScript
 
 ```bash
 $ tsc --init
-# Generates "tsconfig.json"
+# Generates "tsconfig.json", which defines the rules to compile to JavaScript
 ```
 
 Change to

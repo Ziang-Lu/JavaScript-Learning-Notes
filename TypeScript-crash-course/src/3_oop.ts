@@ -10,8 +10,8 @@
  * Todo interface.
  */
 interface Todo {
-  title: string,
-  text: string
+  title: string;
+  text: string;
 }
 
 /**
@@ -23,9 +23,9 @@ function showTodo(todo: Todo): void {
 }
 
 const myTodo = {
-  'title': 'Learn TypeScript',
-  'text': 'Learn about TypeScript linting and VSCode integration'
-}
+  title: 'Learn TypeScript',
+  text: 'Learn about TypeScript linting and VSCode integration'
+};
 showTodo(myTodo);
 
 /**
@@ -46,15 +46,15 @@ interface PersonInterface {
   dateOfBirth: Date;
 
   /**
-  * Returns the full name of this person.
-  * @returns full name
-  */
+   * Returns the full name of this person.
+   * @returns full name
+   */
   getFullName(): string;
 
   /**
-  * Returns the birth year of this person.
-  * @returns birth year of this person
-  */
+   * Returns the birth year of this person.
+   * @returns birth year of this person
+   */
   getBirthYear(): number;
 }
 
@@ -63,16 +63,18 @@ interface PersonInterface {
  */
 class Person implements PersonInterface {
   /**
-  * Static method to return the top boy name and girl name.
-  * @returns top boy name and girl name as an array
-  */
-  static topNames(): [string, string] {
+   * Static method to return the top boy name and girl name.
+   * @returns top boy name and girl name as an array
+   */
+  public static topNames(): [string, string] {
     return ['Mark', 'Lily'];
   }
 
-  firstName: string;
-  lastName: string;
-  dateOfBirth: Date;
+  public firstName: string;
+
+  public lastName: string;
+
+  public dateOfBirth: Date;
 
   /**
    * Constructor with parameter.
@@ -80,17 +82,17 @@ class Person implements PersonInterface {
    * @param lastName last name of the person
    * @param dateOfBirth date of birth of the person as a string
    */
-  constructor(firstName: string, lastName: string, dateOfBirth: string) {
+  public constructor(firstName: string, lastName: string, dateOfBirth: string) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.dateOfBirth = new Date(dateOfBirth);
   }
 
-  getFullName(): string {
+  public getFullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }
 
-  getBirthYear(): number {
+  public getBirthYear(): number {
     return this.dateOfBirth.getFullYear();
   }
 }
@@ -119,7 +121,12 @@ class Student extends Person {
    * @param dateOfBirth date of birth of this student
    * @param studentId student ID of this student
    */
-  constructor(firstName: string, lastName: string, dateOfBirth: string, studentId: number) {
+  public constructor(
+    firstName: string,
+    lastName: string,
+    dateOfBirth: string,
+    studentId: number
+  ) {
     super(firstName, lastName, dateOfBirth);
     this.studentId = studentId;
   }
