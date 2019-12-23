@@ -1,6 +1,8 @@
 {
   "env": {
     "browser": true,
+    "commonjs": true,
+    "es6": true,
     "node": true
   },
   "extends": [ // Order matters
@@ -17,6 +19,13 @@
   ],
   "rules": {
     "class-methods-use-this": "off",
+    "eqeqeq": [
+      "error",
+      "always",
+      {
+        "null": "ignore"
+      }
+    ],
     "func-names": "off",
     "no-console": "off",
     "no-unused-vars": "warn",

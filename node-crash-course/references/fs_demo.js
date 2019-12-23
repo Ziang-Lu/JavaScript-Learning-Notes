@@ -5,7 +5,7 @@ const testFolderName = path.join(__dirname, 'test');
 const filename = path.join(testFolderName, 'hello.txt');
 
 // Create folder
-fs.mkdir(testFolderName, {}, err => {
+fs.mkdir(testFolderName, null, err => {
   if (err) throw err;
   console.log('Folder created.');
 });
