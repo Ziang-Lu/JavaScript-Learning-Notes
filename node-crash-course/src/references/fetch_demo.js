@@ -1,18 +1,18 @@
 const fetch = require('node-fetch');
 
-// fetch() API returns a Promise
+// fetch()-API returns a Promise
 
 // GET request
 fetch('https://jsonplaceholder.typicode.com/users')
   .then(response => response.json())
   .then(users => {
     users.forEach(userData => {
-      const filtered = {
+      const simplified = {
         id: userData.id,
         username: userData.username,
         email: userData.email
       };
-      console.log(filtered);
+      console.log(simplified);
     });
   })
   .catch(err => console.log(err));

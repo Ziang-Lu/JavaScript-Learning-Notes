@@ -28,6 +28,7 @@
     ],
     "func-names": "off",
     "no-console": "off",
+    "no-shadow": "off",
     "no-unused-vars": "warn",
     "object-shorthand": "off",
     "prettier/prettier": [

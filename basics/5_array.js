@@ -158,16 +158,27 @@ console.log(sortedCopy); // [1, 10, 2, 4, 5, 7, 8, undefined] (Note that all the
 console.log(
   'Whether the returned reference is a new reference to the original array: ' +
     `${Object.is(sortedCopy, mixedData)}`
-); // false
+); // true
 
 // To sort the number array in ascending order, we need to pass in our own
 // compare function:
-sortedCopy = unsorted.sort(function compareNumbers(a, b) {
-  return a - b;
-});
+sortedCopy = unsorted.sort((a, b) => a - b);
 console.log('After sorting using compare function:');
 console.log(sortedCopy); // [1, 2, 4, 5, 7, 8, 10, undefined]
 
+console.log();
+
+// *** Array.prototype.every() Method ***
+let myArray = [1, 2, 3, 4, 5];
+console.log('The array:');
+console.log(myArray); // [1, 2, 3, 4, 5]
+console.log(myArray.some(val => val === 3)); // true
+console.log();
+
+// *** Array.prototype.every() Method ***
+console.log('The array:');
+console.log(myArray);
+console.log(arr.every(val => val > 0)); // true
 console.log();
 
 // *** Array.prototype.forEach() Method ***
@@ -185,7 +196,6 @@ mixedData.forEach((val, idx) => console.log(`Logged: [${idx}] ${val}`));
 console.log();
 
 // *** Array.prototype.map() Method ***
-let myArray = [1, 2, 3, 4, 5];
 console.log('Original array:');
 console.log(myArray); // [1, 2, 3, 4, 5]
 const newArray = myArray.map(num => num + 100);

@@ -50,9 +50,8 @@ class Person {
    * @param {string} dateOfBirth date of birth of the person as a string
    */
   constructor(firstName, lastName, dateOfBirth) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.dateOfBirth = new Date(dateOfBirth);
+    const dob = new Date(dateOfBirth);
+    Object.assign(this, { firstName, lastName, dob });
   }
 
   /**
@@ -68,7 +67,7 @@ class Person {
    * @returns {number} birth year of this person
    */
   getBirthYear() {
-    return this.dateOfBirth.getFullYear();
+    return this.dob.getFullYear();
   }
 }
 

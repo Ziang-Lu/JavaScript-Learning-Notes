@@ -24,14 +24,183 @@ These repo contains course notes in the following courses
 
 ### Basics
 
-**Single-threaded** + **Event-driven model => Non-blocking I/O model**
+**Single-threaded + Event-driven model (including an event loop) => Non-blocking I/O model**
 
 **-> 只执行I/O请求, 而不等待I/O结果 => 大部分功能靠callback function实现**
 
-<img src="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/node-crash-course/Node.js%20Event%20Loop.png?raw=true" width="200px">
+<img src="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/node-crash-course/Node.js%20Event%20Loop.png?raw=true" width="400px">
 
 * <u>由于是asynchronous I/O model, 可以支持tens of thousands concurrent connections.</u>
 * Optimizes throughput & scalability for I/O-bound applications
+
+<br>
+
+### Non-blocking I/O Model & Asynchronous I/O in `Node.js`
+
+* **Callback function (native)**
+
+  Common built-in functions that are asynchronous and accept callback functions:
+
+  * `setTimeout(function, delay)` / `setInterval(function, delay)`
+
+    ```javascript
+    function getAsyncMessage(cb) {
+      setTimeout(() => cb('Hello, world!'), 1000);
+      // setTimeout() is asynchronous, meaning that when waiting 1 second, the process continues the execution; thus, "After getAsyncMessage() call" is printed first.
+    }
+    
+    console.log('Before getAsyncMessage() call');
+    getAsyncMessage((msg) => console.log(msg));
+    console.log('After getAsyncMessage() call');
+    
+    // Output:
+    // Before getAsyncMessage() call
+    // After getAsyncMessage() call
+    // (Paused for around 1 second)
+    // Hello, world!
+    ```
+
+  * `Event` mechanism
+
+    Check out `src/async/1-callback/mylogger.js`
+
+  For serveral functions, if we want to <u>ensure the correct execution order</u>, we <u>may need to chain these functions as callbacks</u>.
+
+  => <u>Chaining a lot of callback functions => "Callback hell (回调地狱)"</u>
+
+  Check out `src/async/1-callback/fs_demo.js` as follows:
+
+  ```javascript
+  const fs = require('fs');
+  const path = require('path');
+  
+  const testFolderName = path.join(__dirname, 'test');
+  const filename = path.join(testFolderName, 'hello.txt');
+  
+  // In order to enture the correct execution order, we need to chain the
+  // functions as callbacks, resulting in a long callback chain, which is referred
+  // to as "callback hell".
+  
+  // Create folder
+  fs.mkdir(testFolderName, null, err => {
+    if (err) throw err;
+    console.log('Folder created.');
+  
+    // Create file
+    // (Equivalent to writing to file)
+    fs.writeFile(filename, 'Hello, world!', err => {
+      if (err) throw err;
+      console.log('Data written.');
+  
+      // Write (Append) to file
+      fs.appendFile(filename, ' I love Node.js!', err => {
+        if (err) throw err;
+        console.log('Date appended.');
+  
+        // Read file
+        fs.readFile(filename, 'utf8', (err, data) => {
+          if (err) throw err;
+          console.log(`Read data: ${data}`);
+  
+          // Rename file
+          fs.rename(
+            filename,
+            path.join(testFolderName, 'helloworld.txt'),
+            err => {
+              if (err) throw err;
+              console.log('File renamed.');
+            }
+          );
+        });
+      });
+    });
+  });
+  ```
+
+* **`Promise` (since ES6 / ES2015)**
+
+  * For usage, check out `src/async/2-promise/fetch_demo.js`, which contains the following code snippet:
+
+    ```javascript
+    const fetch = require('node-fetch');
+    
+    // fetch()-API returns a Promise
+    
+    // GET request
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(users => {
+        users.forEach(userData => {
+          const simplified = {
+            id: userData.id,
+            username: userData.username,
+            email: userData.email
+          };
+          console.log(simplified);
+        });
+      })
+      .catch(err => console.log(err));
+    // Any error that happens along the chain, the execution flow goes to the
+    // "catch()" function.
+    ```
+
+  * From <u>"callback hell"</u> to <u>promise</u>, check out `src/async/2-promise/promise_basics.js` as follows:
+
+    ```javascript
+    const fs = require('fs');
+    
+    const somePath = 'test.txt';
+    
+    function myExistHandler() {
+      console.log('File exists');
+    }
+    
+    function myNotExistHandler(err) {
+      console.error(err);
+    }
+    
+    // Originally, with callback functions, we would use "fs.exists()" like this:
+    
+    function checkExistWithCallback(path, existHandler, notExistHandler) {
+      fs.exists(path, exists => {
+        if (exists) {
+          existHandler();
+        } else {
+          notExistHandler(new Error('Path does not exist'));
+        }
+      });
+    }
+    
+    checkExistWithCallback(somePath, myExistHandler, myNotExistHandler);
+    
+    // In order to avoid "callback hell", we want to do the same thing with Promise
+    // like this.
+    
+    // checkExistsWithPromise(somePath)
+    //   .then(myExistHandler)
+    //   .catch(myNotExistHandler);
+    
+    // If we want to the above, we must let "checkExistsWithPromise()" return a
+    // Promise (in which we do the necessary work).
+    
+    function checkExistsWithPromise(path) {
+      return new Promise((resolve, reject) => {
+        fs.exists(path, exists => {
+          if (exists) {
+            resolve();
+          } else {
+            reject(new Error('Path does not exist'));
+          }
+        });
+      });
+    }
+    
+    checkExistsWithPromise(somePath)
+      .then(myExistHandler)
+      .catch(myNotExistHandler);
+    ```
+
+* **`async / await` keywords (since ES8 / ES2017)**
 
 <br>
 
@@ -100,54 +269,6 @@ which automatically "automatically restarts the node application when file chang
 ```
 
 So when in development, instead of running `node index`,  we can simply do `node run-script dev` or simply `node run dev`, which will in turn calls `nodemon index`.
-
-<br>
-
-***
-
-### JavaScript Linting
-
-`ESLint` is responsible for checking syntax errors and problems, while `Prettier` for auto-formatting our JavaScript codes.
-
-**Node Project Settings**
-
-* Install all the necessary packages as in `package.json`
-
-* Generate a `.eslintrc.json` file
-
-  ```bash
-  $ eslint --init
-  ```
-
-  ```json
-  {
-    "extends": [
-      "airbnb-base",
-      "prettier",
-      "plugin:prettier/recommended"
-    ],
-    "plugins": [
-      "prettier"
-    ],
-    "rules": {
-      "class-methods-use-this": "off",
-      "func-names": "off",
-      "no-console": "off",
-      "no-unused-vars": "warn",
-      "object-shorthand": "off",
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true
-        }
-      ]
-    }
-  }
-  ```
-
-* For VSCode integration, install `ESLint` and `Prettier` extensions, and use `shift + option + F` to set `prettier` as the default code formatter.
-
-***
 
 <br>
 
