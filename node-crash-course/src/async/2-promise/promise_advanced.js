@@ -1,22 +1,27 @@
 function cleanRoom() {
   return new Promise((resolve, reject) => {
+    // Simply resolve this Promise
     resolve('Cleaned the room');
   });
 }
 
 function removeGarbage() {
   return new Promise((resolve, reject) => {
+    // Simply resolve this Promise
     resolve('Removed the garbage');
   });
 }
 
 function winIceCream() {
   return new Promise((resolve, reject) => {
+    // Simply resolve this Promise
     resolve('Won an ice cream!');
   });
 }
 
-// Sequential execution
+console.log('With asynchronous programming, this line is printed first.');
+
+// Sequential execution (chaining)
 cleanRoom()
   .then(msg => {
     console.log(msg);
@@ -31,14 +36,14 @@ cleanRoom()
     console.log('All finished');
   });
 
-// Paralle execution
-Promise.all([cleanRoom(), removeGarbage(), winIceCream()]).then(values => {
-  console.log(values);
-  console.log('All finished');
-  console.log();
-});
+// Parallel execution
+// Promise.all([cleanRoom(), removeGarbage(), winIceCream()]).then(values => {
+//   console.log(values);
+//   console.log('All finished');
+//   console.log();
+// });
 
-Promise.race([cleanRoom(), removeGarbage(), winIceCream()]).then(value => {
-  console.log(value);
-  console.log('One finished');
-});
+// Promise.race([cleanRoom(), removeGarbage(), winIceCream()]).then(value => {
+//   console.log(value);
+//   console.log('One finished');
+// });

@@ -24,7 +24,7 @@ These repo contains course notes in the following courses
 
 ### Basics
 
-**Single-threaded + Event-driven model (including an event loop) => Non-blocking I/O model**
+**Single-threaded + Event-driven model (including an event loop) => Natively non-blocking I/O model**
 
 **-> 只执行I/O请求, 而不等待I/O结果 => 大部分功能靠callback function实现**
 
