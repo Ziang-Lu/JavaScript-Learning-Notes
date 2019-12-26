@@ -18,13 +18,13 @@ cleanRoom()
   });
 
 // Parallel execution
-// Promise.all([cleanRoom(), removeGarbage(), winIceCream()]).then(values => {
-//   console.log(values);
-//   console.log('All finished');
-//   console.log();
-// });
+Promise.all([cleanRoom(), removeGarbage(), winIceCream()]).then(values => {
+  console.log(values);
+  console.log('All finished');
+  console.log();
+});
 
-// Promise.race([cleanRoom(), removeGarbage(), winIceCream()]).then(value => {
-//   console.log(value);
-//   console.log('One finished');
-// });
+Promise.race([cleanRoom(), removeGarbage(), winIceCream()]).then(value => {
+  console.log(value);
+  console.log('One finished');
+});

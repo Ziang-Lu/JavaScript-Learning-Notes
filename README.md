@@ -62,13 +62,13 @@ These repo contains course notes in the following courses
 
   * `Event` mechanism
 
-    Check out `src/async/1-callback/mylogger.js`
+    Check out `async/1-callback/mylogger.js`
 
   For serveral functions, if we want to <u>ensure the correct execution order</u>, we <u>may need to chain these functions as callbacks</u>.
 
   => <u>Chaining a lot of callback functions => "Callback hell (回调地狱)"</u>
 
-  Check out `src/async/1-callback/fs_demo.js` as follows:
+  Check out `async/1-callback/fs_demo.js` as follows:
 
   ```javascript
   const fs = require('fs');
@@ -119,7 +119,7 @@ These repo contains course notes in the following courses
 
 * **`Promise` (since ES6 / ES2015)**
 
-  * For usage, check out `src/async/2-promise/fetch_promise.js`, which contains the following code snippet:
+  * For usage, check out `async/2-promise/fetch_promise.js`, which contains the following code snippet:
 
     ```javascript
     const fetch = require('node-fetch');
@@ -144,7 +144,7 @@ These repo contains course notes in the following courses
     // "catch()" function.
     ```
 
-  * From <u>"callback hell"</u> to <u>promise</u>, check out `src/async/2-promise/promise_basics.js` as follows:
+  * From <u>"callback hell"</u> to <u>Promise</u>, check out `src/async/2-promise/promise_basics.js` as follows:
 
     ```javascript
     const fs = require('fs');
@@ -199,6 +199,41 @@ These repo contains course notes in the following courses
       .then(myExistHandler)
       .catch(myNotExistHandler);
     ```
+    
+  * For advantage usage of Promises, including <u>sequential execution (chaining) of multiple Promises</u>, or <u>parallel execution</u>, check out `async/2-promise/promise_advanced.js` as follows:
+
+    ```javascript
+    const { cleanRoom, removeGarbage, winIceCream } = require('../common');
+    
+    console.log('With asynchronous programming, this line is printed first.');
+    
+    // Sequential execution (chaining)
+    cleanRoom()
+      .then(msg => {
+        console.log(msg);
+        return removeGarbage();
+      })
+      .then(msg => {
+        console.log(msg);
+        return winIceCream();
+      })
+      .then(msg => {
+        console.log(msg);
+        console.log('All finished');
+      });
+    
+    // Parallel execution
+    Promise.all([cleanRoom(), removeGarbage(), winIceCream()]).then(values => {
+      console.log(values);
+      console.log('All finished');
+      console.log();
+    });
+    
+    Promise.race([cleanRoom(), removeGarbage(), winIceCream()]).then(value => {
+      console.log(value);
+      console.log('One finished');
+    });
+    ```
 
 * **`async / await` keywords (since ES8 / ES2017)**
 
@@ -244,7 +279,24 @@ These repo contains course notes in the following courses
       .catch(err => console.error(err));
     ```
 
+  * For  <u>sequential execution (chaining) of multiple Promises</u> usage of Promises with `async/await` syntax sugar, check out `async/3-async-await/promise_async_await.js` as follows:
+
+    ```javascript
+    const { cleanRoom, removeGarbage, winIceCream } = require('../common');
     
+    async function myRoutine() {
+      let msg = await cleanRoom();
+      console.log(msg);
+      msg = await removeGarbage();
+      console.log(msg);
+      msg = await winIceCream();
+      console.log(msg);
+      console.log('All finished');
+    }
+    
+    myRoutine();
+    
+    ```
 
 <br>
 

@@ -1,10 +1,5 @@
 const { cleanRoom, removeGarbage, winIceCream } = require('../common');
 
-/**
- * My daily routine Promise, which sequentially executes (chains) cleanRoom(),
- * removeGarbage() and winIceCream(), which are all Promises themselves.
- * @returns {Promise} a Promise to do my daily routine
- */
 async function myRoutine() {
   let msg = await cleanRoom();
   console.log(msg);
