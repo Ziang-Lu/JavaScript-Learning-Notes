@@ -119,7 +119,7 @@ These repo contains course notes in the following courses
 
 * **`Promise` (since ES6 / ES2015)**
 
-  * For usage, check out `src/async/2-promise/fetch_demo.js`, which contains the following code snippet:
+  * For usage, check out `src/async/2-promise/fetch_promise.js`, which contains the following code snippet:
 
     ```javascript
     const fetch = require('node-fetch');
@@ -201,6 +201,50 @@ These repo contains course notes in the following courses
     ```
 
 * **`async / await` keywords (since ES8 / ES2017)**
+
+  本质上是一个syntax sugar, 用`await <Promise>`来**asynchronously**等待一个`Promise`执行完毕, 而在使用了`await`语句的函数中, 函数的定义必须加上`async`, 即`async function ...`, 而这样一来这个函数本身也返回一个`Promise`
+
+  ***
+
+  有点类似于`Python `中的`async def / await`:
+
+  * 使用`await <coroutine>`来**asynchronously**等待一个`coroutine`执行完毕, 而在使用了`await`语句的函数中, 函数的定义必须加上`async`, 即`async def ...`, 而这样一来这个函数本身也返回一个`coroutine`
+
+  ***
+
+  * For usage, check out `src/async/3-async-await/fetch_async_await.js`, which contains the following code snippet:
+
+    ```javascript
+    /**
+     * Same thing as "fetch_promise.js", but with "async/await" syntax sugar.
+     */
+    
+    const fetch = require('node-fetch');
+    
+    // fetch()-API returns a Promise
+    
+    // GET request
+    async function fetchUsers() {
+      const response = await fetch('https://jsonplaceholder.typicode.com/users');
+      const users = await response.json(); // response.json() also returns a Promise
+      return users;
+    }
+    
+    fetchUsers()
+      .then(users => {
+        users.forEach(userData => {
+          const simplified = {
+            id: userData.id,
+            username: userData.username,
+            email: userData.email
+          };
+          console.log(simplified);
+        });
+      })
+      .catch(err => console.error(err));
+    ```
+
+    
 
 <br>
 

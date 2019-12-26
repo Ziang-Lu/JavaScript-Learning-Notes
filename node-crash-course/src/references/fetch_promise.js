@@ -20,8 +20,6 @@ fetch('https://jsonplaceholder.typicode.com/users')
 // Any error that happens along the chain, the execution flow goes to the
 // "catch()" function.
 
-console.log();
-
 // POST request
 fetch('https://jsonplaceholder.typicode.com/posts', {
   method: 'POST',
@@ -35,7 +33,8 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
   })
 })
   .then(response => response.json()) // response.json() also returns a Promise
-  .then(newPost => console.log(newPost));
+  .then(newPost => console.log(newPost))
+  .catch(err => console.err(err));
 
 console.log('Since fetch()-API is asynchronous, this line is printed first.\n');
 

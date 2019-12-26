@@ -1,1 +1,0 @@
-../../references/fetch_demo.js
