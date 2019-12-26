@@ -27,9 +27,9 @@ Promise.all([cleanRoom(), removeGarbage(), winIceCream()])
   })
   .catch(err => console.log(err));
 
-Promise.race([cleanRoom(), removeGarbage(), winIceCream()])
-  .then(value => {
-    console.log(value);
-    console.log('One finished');
-  })
-  .catch(err => console.log(err));
+// Promise.race([cleanRoom(), removeGarbage(), winIceCream()])
+//   .then(value => {
+//     console.log(value);
+//     console.log('One finished');
+//   })
+//   .catch(err => console.log(err));

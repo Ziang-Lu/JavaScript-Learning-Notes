@@ -231,13 +231,6 @@ These repo contains course notes in the following courses
         console.log();
       })
       .catch(err => console.log(err));
-    
-    Promise.race([cleanRoom(), removeGarbage(), winIceCream()])
-      .then(value => {
-        console.log(value);
-        console.log('One finished');
-      })
-      .catch(err => console.log(err));
     ```
 
     ***
@@ -275,6 +268,8 @@ These repo contains course notes in the following courses
     
     // GET request
     async function fetchUsers() {
+      // This "async" function returns a Promise
+    
       const response = await fetch('https://jsonplaceholder.typicode.com/users');
       const users = await response.json(); // response.json() also returns a Promise
       users.forEach(userData => {
@@ -290,25 +285,51 @@ These repo contains course notes in the following courses
     fetchUsers().catch(err => console.error(err));
     ```
 
-  * For  <u>sequential execution (chaining) of multiple Promises</u> usage of Promises with `async/await` syntax sugar, check out `async/3-async-await/promise_async_await.js` as follows:
+  * For usage of Promises with `async/await` syntax sugar, check out `async/3-async-await/promise_async_await.js` as follows:
 
     ```javascript
     const { cleanRoom, removeGarbage, winIceCream } = require('../common');
     
+    // Sequential execution (chaining)
     async function myRoutine() {
-      let msg = await cleanRoom();
-      console.log(msg);
-      msg = await removeGarbage();
-      console.log(msg);
-      msg = await winIceCream();
-      console.log(msg);
-      console.log('All finished');
+      // This "async" function returns a Promise
+    
+      try {
+        let msg = await cleanRoom();
+        console.log(msg);
+        msg = await removeGarbage();
+        console.log(msg);
+        msg = await winIceCream();
+        console.log(msg);
+        console.log('All finished');
+      } catch (err) {
+        console.error(err);
+      }
     }
     
     myRoutine();
     
     // 使得程序looks and feels like synchronous, 虽然实际上只是syntax sugar, under the
-    // ood还是asynchronous
+    // hood还是asynchronous
+    
+    // Parallel execution
+    async function myRoutineParallel() {
+      // This "async" function returns a Promise
+    
+      try {
+        const messages = await Promise.all([
+          cleanRoom(),
+          removeGarbage(),
+          winIceCream()
+        ]);
+        console.log(messages);
+        console.log('All finished');
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    
+    myRoutineParallel();
     ```
 
 <br>
