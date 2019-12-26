@@ -11,3 +11,6 @@ async function myRoutine() {
 }
 
 myRoutine();
+
+// 使得程序looks and feels like synchronous, 虽然实际上只是syntax sugar, under the
+// hood还是asynchronous

@@ -220,24 +220,39 @@ These repo contains course notes in the following courses
       .then(msg => {
         console.log(msg);
         console.log('All finished');
-      });
+      })
+      .catch(err => console.log(err));
     
     // Parallel execution
-    Promise.all([cleanRoom(), removeGarbage(), winIceCream()]).then(values => {
-      console.log(values);
-      console.log('All finished');
-      console.log();
-    });
+    Promise.all([cleanRoom(), removeGarbage(), winIceCream()])
+      .then(values => {
+        console.log(values);
+        console.log('All finished');
+        console.log();
+      })
+      .catch(err => console.log(err));
     
-    Promise.race([cleanRoom(), removeGarbage(), winIceCream()]).then(value => {
-      console.log(value);
-      console.log('One finished');
-    });
+    Promise.race([cleanRoom(), removeGarbage(), winIceCream()])
+      .then(value => {
+        console.log(value);
+        console.log('One finished');
+      })
+      .catch(err => console.log(err));
     ```
+
+    ***
+
+    `Promise`有点类似于`Python`中的`coroutine`:
+
+    * 一个`Promise`是**asynchronously**执行的. 在执行过程中`JavaScript`也会尝试跳转去执行程序的其他部分, 在适当的时候再返回来接着执行.
+
+    ***
 
 * **`async / await` keywords (since ES8 / ES2017)**
 
   本质上是一个syntax sugar, 用`await <Promise>`来**asynchronously**等待一个`Promise`执行完毕, 而在使用了`await`语句的函数中, 函数的定义必须加上`async`, 即`async function ...`, 而这样一来这个函数本身也返回一个`Promise`
+
+  *(=> 使得程序looks and feels like synchronous, 虽然实际上只是syntax sugar, under the hood还是asynchronous)*
 
   ***
 
@@ -262,21 +277,17 @@ These repo contains course notes in the following courses
     async function fetchUsers() {
       const response = await fetch('https://jsonplaceholder.typicode.com/users');
       const users = await response.json(); // response.json() also returns a Promise
-      return users;
+      users.forEach(userData => {
+        const simplified = {
+          id: userData.id,
+          username: userData.username,
+          email: userData.email
+        };
+        console.log(simplified);
+      });
     }
     
-    fetchUsers()
-      .then(users => {
-        users.forEach(userData => {
-          const simplified = {
-            id: userData.id,
-            username: userData.username,
-            email: userData.email
-          };
-          console.log(simplified);
-        });
-      })
-      .catch(err => console.error(err));
+    fetchUsers().catch(err => console.error(err));
     ```
 
   * For  <u>sequential execution (chaining) of multiple Promises</u> usage of Promises with `async/await` syntax sugar, check out `async/3-async-await/promise_async_await.js` as follows:
@@ -296,6 +307,8 @@ These repo contains course notes in the following courses
     
     myRoutine();
     
+    // 使得程序looks and feels like synchronous, 虽然实际上只是syntax sugar, under the
+    // ood还是asynchronous
     ```
 
 <br>

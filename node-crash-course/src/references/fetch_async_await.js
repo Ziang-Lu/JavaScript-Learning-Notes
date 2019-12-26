@@ -10,22 +10,18 @@ const fetch = require('node-fetch');
 async function fetchUsers() {
   const response = await fetch('https://jsonplaceholder.typicode.com/users');
   const users = await response.json(); // response.json() also returns a Promise
-  return users;
+  users.forEach(userData => {
+    const simplified = {
+      id: userData.id,
+      username: userData.username,
+      email: userData.email
+    };
+    console.log(simplified);
+  });
+  console.log();
 }
 
-fetchUsers()
-  .then(users => {
-    users.forEach(userData => {
-      const simplified = {
-        id: userData.id,
-        username: userData.username,
-        email: userData.email
-      };
-      console.log(simplified);
-    });
-    console.log();
-  })
-  .catch(err => console.error(err));
+fetchUsers().catch(err => console.error(err));
 
 // Post request
 async function createPost() {
@@ -41,11 +37,9 @@ async function createPost() {
     })
   });
   const newPost = await response.json(); // response.json() also returns a Promise
-  return newPost;
+  console.log(newPost);
 }
 
-createPost()
-  .then(newPost => console.log(newPost))
-  .catch(err => console.error(err));
+createPost().catch(err => console.error(err));
 
 console.log('Since fetch()-API is asynchronous, this line is printed first.\n');
