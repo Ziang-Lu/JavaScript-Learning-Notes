@@ -21,9 +21,7 @@ function setTimeoutWithPromise(timeout) {
     if (typeof timeout !== 'number') {
       reject(new Error('timeout should be a valid number'));
     } else {
-      setTimeout(() => {
-        resolve();
-      }, timeout);
+      setTimeout(resolve, timeout);
     }
   });
 }
