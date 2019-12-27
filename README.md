@@ -20,7 +20,7 @@ These repo contains course notes in the following courses
 
 <br>
 
-## Node.js Runtime
+## `Node.js` Runtime
 
 ### Basics
 
@@ -29,6 +29,8 @@ These repo contains course notes in the following courses
 **-> 只执行I/O请求, 而不等待I/O结果 => 大部分功能靠callback function实现**
 
 <img src="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/node-crash-course/Node.js%20Event%20Loop.png?raw=true" width="400px">
+
+*(每当执行一个event handler (asynchronous task)的时候, `Node.js`开启一个新的thread, 专门负责执行该task. 那么这样, 虽然在子线程中仍然是blocking的, 因为需要等待task执行结果, 在main thread中是non-blocking的.)*
 
 * <u>由于是asynchronous I/O model, 可以支持tens of thousands concurrent connections.</u>
 * Optimizes throughput & scalability for I/O-bound applications
