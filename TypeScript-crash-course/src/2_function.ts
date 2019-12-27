@@ -7,6 +7,8 @@ function add(x: number, y: number): number {
   return x + y;
 }
 
+console.log(add(1, 2));
+
 /**
  * Returns the full name from the given first name and last name.
  * @param firstName first name
@@ -20,3 +22,5 @@ function getFullName(firstName: string, lastName?: string): string {
   }
   return `${firstName} ${lastName}`;
 }
+
+console.log('Ziang', 'Lu');
