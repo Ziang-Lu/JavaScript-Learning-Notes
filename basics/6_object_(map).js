@@ -1,5 +1,3 @@
-'use strict';
-
 /*
 IMPORTANT!!!
 An object in JavaScript is essentially a MAP, which is just a group of key-value
@@ -9,7 +7,7 @@ let umbrella = {
   color: 'pink',
   isOpen: false,
 
-  open: function() {
+  open: () => {
     if (this.isOpen) {
       return 'This umbrella is already open.';
     } else {
@@ -18,7 +16,7 @@ let umbrella = {
     }
   },
 
-  close: function() {
+  close: () => {
     if (this.isOpen) {
       this.isOpen = false;
       return 'Successfully closed the umbrella!';
@@ -49,7 +47,6 @@ console.log(Object.values(umbrella)); // ['pink', true, [Function: open], [Funct
 console.log();
 
 // *** JSON Convertion ***
-converted = JSON.stringify(umbrella);
-console.log(converted);
-parsed = JSON.parse(converted);
-console.log(parsed);
+const converted = JSON.stringify(umbrella);
+console.log(JSON.stringify(umbrella));
+console.log(JSON.parse(converted));

@@ -1,5 +1,3 @@
-'use strict';
-
 // ***** while Loop *****
 
 // Variant FizzBuzz game

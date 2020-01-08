@@ -1,5 +1,3 @@
-'use strict';
-
 // "array" is just a special type of "object".
 let mixedData = [1, true, 'abcd', 'all the strings', null, undefined];
 console.log(mixedData);

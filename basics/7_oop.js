@@ -1,5 +1,3 @@
-'use strict';
-
 // *** Old-fashioned Way ***
 
 // function Person(firstName, lastName, dateOfBirth) {

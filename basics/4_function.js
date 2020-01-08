@@ -1,5 +1,3 @@
-'use strict';
-
 // ***** Normal Function Declaration *****
 
 // Calculate the average of two numbers

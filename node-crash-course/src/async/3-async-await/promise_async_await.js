@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 const { cleanRoom, removeGarbage, winIceCream } = require('../common');
 
 // Sequential execution (chaining)
@@ -23,6 +24,8 @@ myRoutine();
 // hood还是asynchronous
 
 // Parallel execution
+
+// Example 1
 async function myRoutineParallel() {
   // This "async" function returns a Promise
 
@@ -40,3 +43,17 @@ async function myRoutineParallel() {
 }
 
 myRoutineParallel();
+
+// Example 2
+async function fetchingParallelDisplayInOrder(urls) {
+  // Fetch all the URLs in parallel
+  const textPromises = urls.map(async url => {
+    const response = await fetch(url);
+    return response.text();
+  });
+
+  // Display the texts in order
+  for (const textPromise of textPromises) {
+    console.log(await textPromise);
+  }
+}

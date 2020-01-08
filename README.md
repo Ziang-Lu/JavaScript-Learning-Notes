@@ -50,11 +50,11 @@ These repo contains course notes in the following courses
       setTimeout(() => cb('Hello, world!'), 1000);
       // setTimeout() is asynchronous, meaning that when waiting 1 second, the process continues the execution; thus, "After getAsyncMessage() call" is printed first.
     }
-    
+
     console.log('Before getAsyncMessage() call');
     getAsyncMessage((msg) => console.log(msg));
     console.log('After getAsyncMessage() call');
-    
+
     // Output:
     // Before getAsyncMessage() call
     // After getAsyncMessage() call
@@ -75,35 +75,35 @@ These repo contains course notes in the following courses
   ```javascript
   const fs = require('fs');
   const path = require('path');
-  
+
   const testFolderName = path.join(__dirname, 'test');
   const filename = path.join(testFolderName, 'hello.txt');
-  
+
   // In order to enture the correct execution order, we need to chain the
   // functions as callbacks, resulting in a long callback chain, which is referred
   // to as "callback hell".
-  
+
   // Create folder
   fs.mkdir(testFolderName, null, err => {
     if (err) throw err;
     console.log('Folder created.');
-  
+
     // Create file
     // (Equivalent to writing to file)
     fs.writeFile(filename, 'Hello, world!', err => {
       if (err) throw err;
       console.log('Data written.');
-  
+
       // Write (Append) to file
       fs.appendFile(filename, ' I love Node.js!', err => {
         if (err) throw err;
         console.log('Date appended.');
-  
+
         // Read file
         fs.readFile(filename, 'utf8', (err, data) => {
           if (err) throw err;
           console.log(`Read data: ${data}`);
-  
+
           // Rename file
           fs.rename(
             filename,
@@ -125,9 +125,9 @@ These repo contains course notes in the following courses
 
     ```javascript
     const fetch = require('node-fetch');
-    
+
     // fetch()-API returns a Promise
-    
+
     // GET request
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
@@ -150,19 +150,19 @@ These repo contains course notes in the following courses
 
     ```javascript
     const fs = require('fs');
-    
+
     const somePath = 'test.txt';
-    
+
     function myExistHandler() {
       console.log('File exists');
     }
-    
+
     function myNotExistHandler(err) {
       console.error(err);
     }
-    
+
     // Originally, with callback functions, we would use "fs.exists()" like this:
-    
+
     function checkExistWithCallback(path, existHandler, notExistHandler) {
       fs.exists(path, exists => {
         if (exists) {
@@ -172,19 +172,19 @@ These repo contains course notes in the following courses
         }
       });
     }
-    
+
     checkExistWithCallback(somePath, myExistHandler, myNotExistHandler);
-    
+
     // In order to avoid "callback hell", we want to do the same thing with Promise
     // like this.
-    
+
     // checkExistsWithPromise(somePath)
     //   .then(myExistHandler)
     //   .catch(myNotExistHandler);
-    
+
     // If we want to the above, we must let "checkExistsWithPromise()" return a
     // Promise (in which we do the necessary work).
-    
+
     function checkExistsWithPromise(path) {
       return new Promise((resolve, reject) => {
         fs.exists(path, exists => {
@@ -196,19 +196,19 @@ These repo contains course notes in the following courses
         });
       });
     }
-    
+
     checkExistsWithPromise(somePath)
       .then(myExistHandler)
       .catch(myNotExistHandler);
     ```
-    
+
   * For advantage usage of Promises, including <u>sequential execution (chaining) of multiple Promises</u>, or <u>parallel execution</u>, check out `async/2-promise/promise_advanced.js` as follows:
 
     ```javascript
     const { cleanRoom, removeGarbage, winIceCream } = require('../common');
-    
+
     console.log('With asynchronous programming, this line is printed first.');
-    
+
     // Sequential execution (chaining)
     cleanRoom()
       .then(msg => {
@@ -224,7 +224,7 @@ These repo contains course notes in the following courses
         console.log('All finished');
       })
       .catch(err => console.log(err));
-    
+
     // Parallel execution
     Promise.all([cleanRoom(), removeGarbage(), winIceCream()])
       .then(values => {
@@ -257,80 +257,87 @@ These repo contains course notes in the following courses
 
   ***
 
-  * For usage, check out `src/async/3-async-await/fetch_async_await.js`, which contains the following code snippet:
+  这个syntax sugar是我们对于error handling, 不必再使用`.catch()`方法, 而是可以恢复到传统的synchronous programming的`try/catch`.
 
+  * For usage, check out `src/async/3-async-await/fetch_async_await.js`, which contains the following code snippet:
+  
     ```javascript
     /**
-     * Same thing as "fetch_promise.js", but with "async/await" syntax sugar.
+   * Same thing as "fetch_promise.js", but with "async/await" syntax sugar.
      */
-    
+  
     const fetch = require('node-fetch');
-    
+  
     // fetch()-API returns a Promise
     
     // GET request
-    async function fetchUsers() {
+  async function fetchUsers() {
       // This "async" function returns a Promise
     
-      const response = await fetch('https://jsonplaceholder.typicode.com/users');
-      const users = await response.json(); // response.json() also returns a Promise
-      users.forEach(userData => {
-        const simplified = {
-          id: userData.id,
-          username: userData.username,
-          email: userData.email
-        };
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const users = await response.json(); // response.json() also returns a Promise
+        users.forEach(userData => {
+          const simplified = {
+            id: userData.id,
+            username: userData.username,
+            email: userData.email
+          };
         console.log(simplified);
-      });
+        });
+      } catch (err) {
+      console.error(err);
+      }
+    console.log();
     }
     
-    fetchUsers().catch(err => console.error(err));
+  fetchUsers();
     ```
-
+  
   * For usage of Promises with `async/await` syntax sugar, check out `async/3-async-await/promise_async_await.js` as follows:
 
     ```javascript
     const { cleanRoom, removeGarbage, winIceCream } = require('../common');
-    
+  
     // Sequential execution (chaining)
     async function myRoutine() {
       // This "async" function returns a Promise
-    
+  
       try {
         let msg = await cleanRoom();
         console.log(msg);
         msg = await removeGarbage();
         console.log(msg);
-        msg = await winIceCream();
+      msg = await winIceCream();
         console.log(msg);
-        console.log('All finished');
+      console.log('All finished');
       } catch (err) {
         console.error(err);
-      }
     }
-    
+    }
+  
     myRoutine();
-    
+
     // 使得程序looks and feels like synchronous, 虽然实际上只是syntax sugar, under the
     // hood还是asynchronous
-    
+  
     // Parallel execution
     async function myRoutineParallel() {
       // This "async" function returns a Promise
-    
+  
       try {
         const messages = await Promise.all([
           cleanRoom(),
           removeGarbage(),
           winIceCream()
-        ]);
+      ]);
         console.log(messages);
         console.log('All finished');
       } catch (err) {
         console.error(err);
       }
     }
-    
+  
     myRoutineParallel();
     ```
 
@@ -359,7 +366,7 @@ Node installations and versions are managed by NVM (Node Version Manager).
 
   ```bash
   $ nvm install node  # Install the latest version
-  
+
   # Verify that Node has been installed:
   $ nvm which current
   # /Users/Ziang_Lu/.nvm/versions/node/v13.5.0/bin/node

@@ -23,7 +23,6 @@ Promise.all([cleanRoom(), removeGarbage(), winIceCream()])
   .then(values => {
     console.log(values);
     console.log('All finished');
-    console.log();
   })
   .catch(err => console.log(err));
 

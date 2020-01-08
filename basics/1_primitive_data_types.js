@@ -1,5 +1,3 @@
-'use strict';
-
 // ***** number *****
 console.log(`Type of 123: ${typeof 123}`); // number
 console.log(`Type of the result of 2 / 0: ${2 / 0}`); // Infinity
