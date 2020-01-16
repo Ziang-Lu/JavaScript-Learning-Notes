@@ -56,4 +56,8 @@ async function fetchingParallelDisplayInOrder(urls) {
   for (const textPromise of textPromises) {
     console.log(await textPromise);
   }
+  // Note that we cannot use ".forEach()" as follows:
+  // textPromises.forEach(async textPromise => console.log(await textPromise));
+  // since the asynchronous functions that we pass to ".forEach()" will execute
+  // in parallel, and thus we have no guarantee on the order of text displaying.
 }

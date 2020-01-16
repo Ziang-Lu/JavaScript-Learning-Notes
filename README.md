@@ -15,8 +15,9 @@ These repo contains course notes in the following courses
 3. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/3_loop.js">Loop</a>
 4. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/4_function.js">Function</a>
 5. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/5_array.js">Array</a>
-6. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/6_object_(map).js">Object (Map)</a>
-7. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/7_oop.js">OOP</a>
+6. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/6_scoping_demo.js">Scopes and Closures</a>
+7. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/7_object_(map).js">Object (Map)</a>
+8. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/8_oop.js">OOP</a>
 
 <br>
 
@@ -263,17 +264,18 @@ These repo contains course notes in the following courses
   
     ```javascript
     /**
+    ```
    * Same thing as "fetch_promise.js", but with "async/await" syntax sugar.
      */
   
     const fetch = require('node-fetch');
   
     // fetch()-API returns a Promise
-    
+  
     // GET request
   async function fetchUsers() {
       // This "async" function returns a Promise
-    
+  
       try {
         const response = await fetch('https://jsonplaceholder.typicode.com/users');
         const users = await response.json(); // response.json() also returns a Promise
@@ -290,12 +292,12 @@ These repo contains course notes in the following courses
       }
     console.log();
     }
-    
+  
   fetchUsers();
     ```
   
-  * For usage of Promises with `async/await` syntax sugar, check out `async/3-async-await/promise_async_await.js` as follows:
-
+* For usage of Promises with `async/await` syntax sugar, check out `async/3-async-await/promise_async_await.js` as follows:
+  
     ```javascript
     const { cleanRoom, removeGarbage, winIceCream } = require('../common');
   
@@ -316,8 +318,8 @@ These repo contains course notes in the following courses
     }
     }
   
-    myRoutine();
-
+  myRoutine();
+  
     // 使得程序looks and feels like synchronous, 虽然实际上只是syntax sugar, under the
     // hood还是asynchronous
   

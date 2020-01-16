@@ -1,4 +1,7 @@
-// "array" is just a special type of "object".
+/**
+ * "Array" is just a special type of "Object".
+ */
+
 let mixedData = [1, true, 'abcd', 'all the strings', null, undefined];
 console.log(mixedData);
 console.log(Array.isArray(mixedData)); // true
@@ -123,6 +126,15 @@ console.log(mixedData); // [1, true, 'abcd', 'all the strings', 'basketball']
 console.log('Removed elements:');
 console.log(removed); // [42]
 
+console.log();
+
+// *** Array.prototype.concat() Method ***
+console.log('Original:');
+console.log(mixedData); // [1, true, 'abcd', 'all the strings', 'basketball']
+console.log(mixedData.contat(['first']));
+console.log('After concatenation:');
+console.log(mixedData); // [1, true, 'abcd', 'all the strings', 'basketball', 'first']
+mixedData.pop();
 console.log();
 
 // *** Array.prototype.reverse() Method ***

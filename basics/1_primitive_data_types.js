@@ -15,7 +15,7 @@ console.log();
 // ***** array *****
 console.log(
   `Type of [123, true, "any text"]: ${typeof [123, true, 'any text']}`
-); // object
+); // "Array" is just a special type of "Object"
 console.log();
 
 // *** Special Data Values ***
