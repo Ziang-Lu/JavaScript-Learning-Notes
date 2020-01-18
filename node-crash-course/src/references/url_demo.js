@@ -1,4 +1,4 @@
-// TODO: Read docs
+// TODO: Read docs about "url" module
 
 const url = require('url');
 

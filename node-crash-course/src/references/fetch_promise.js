@@ -1,3 +1,5 @@
+// TODO: Read docs about fetch()-API
+
 const fetch = require('node-fetch');
 
 // fetch()-API returns a Promise

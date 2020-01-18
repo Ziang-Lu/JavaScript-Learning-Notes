@@ -45,6 +45,12 @@ async function myRoutineParallel() {
 myRoutineParallel();
 
 // Example 2
+
+/**
+ * Fetches the given URLs in parallel, and display the results in order.
+ * @param {Array} urls list of URLs
+ * @returns {undefined}
+ */
 async function fetchingParallelDisplayInOrder(urls) {
   // Fetch all the URLs in parallel
   const textPromises = urls.map(async url => {

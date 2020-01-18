@@ -16,6 +16,11 @@ setTimeout(
 // If we want the above, we must let "setTimeoutWithPromise()" return a Promise
 // (in which we simply wrap a setTimeout() call).
 
+/**
+ * Promisified version of setTimout().
+ * @param {number} timeout delay time in miliseconds
+ * @returns {Promise} promise wrapping setTimeout()
+ */
 function setTimeoutWithPromise(timeout) {
   return new Promise((resolve, reject) => {
     if (typeof timeout !== 'number') {

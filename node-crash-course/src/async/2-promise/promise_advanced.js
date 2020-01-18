@@ -37,12 +37,22 @@ Promise.all([cleanRoom(), removeGarbage(), winIceCream()])
 //   })
 //   .catch(err => console.log(err));
 
-// Example 2
+// Example 2: Parallel execution and then sequential execution
 
+/**
+ * Fetches the given URL and returns a result JSON.
+ * @param {string} url URL to fetch
+ * @returns {object} result JSON
+ */
 function getJSON(url) {
   return fetch(url).then(response => response.json());
 }
 
+/**
+ * Fetches the given URLs in parallel, and display the results in order.
+ * @param {Array} urls list of URLs
+ * @returns {undefined}
+ */
 function fetchingParallelDisplayInOrder(urls) {
   // Fetch all the URLs in parallel
   const jsonPromises = urls.map(getJSON);
