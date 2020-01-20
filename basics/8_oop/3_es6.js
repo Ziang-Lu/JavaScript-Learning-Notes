@@ -1,7 +1,7 @@
 /**
  * ES6 Way
  * Essentially, this is just syntax sugar, that under the hood does the same
- * thing as above.
+ * thing as previous ones.
  */
 
 /**
@@ -61,7 +61,7 @@ class Student extends Person {
    * @param {string} firstName first name of the student
    * @param {string} lastName last name of the student
    * @param {string} dateOfBirth date of birth of the student
-   * @param {int} studentId student ID
+   * @param {number} studentId student ID
    */
   constructor(firstName, lastName, dateOfBirth, studentId) {
     super(firstName, lastName, dateOfBirth);

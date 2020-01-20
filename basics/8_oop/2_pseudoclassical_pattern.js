@@ -2,12 +2,11 @@
  * Old-fashioned Way 2: Pseudo-Classical Pattern
  * The only difference is the way in which we use the functional class:
  * -> This time, we use the "new" keyword, which will handle a lot of work in
- *    the above example for us.
+ *    the previous example for us.
  */
 
 // Define a "prototypal class", aka "functional class", which is essentially
 // still a function
-
 /**
  * Functional class for "Person".
  * @param {string} firstName first name of the person
@@ -48,10 +47,10 @@ console.log();
 
 /**
  * Functional class for "Student".
- * @param {*} firstName first name of the student
- * @param {*} lastName last name of the student
- * @param {*} dateOfBirth date of birth of the student
- * @param {*} studentId student ID
+ * @param {string} firstName first name of the student
+ * @param {string} lastName last name of the student
+ * @param {string} dateOfBirth date of birth of the student
+ * @param {number} studentId student ID
  */
 function Student(firstName, lastName, dateOfBirth, studentId) {
   Person.call(this, firstName, lastName, dateOfBirth);
@@ -59,8 +58,8 @@ function Student(firstName, lastName, dateOfBirth, studentId) {
 }
 
 // Inheritance的本质上是prototype chaining
-Student.prototype = Object.create(Person.prototype); // At this point, Student.prototype is exactly the same as Person.prototype.
-Student.prototype.constructor = Student; // However, we must override the constructor property; otherwise it would still be Person
+Student.prototype = Object.create(Person.prototype); // At this point, Student.prototype simply delegates to Person.prototype.
+Student.prototype.constructor = Student; // However, we must manually add the constructor property; otherwise calling "Student.prototype.constructor" would be delegated to Person.protype, which results in Person.
 
 const student1 = new Student('Ziang', 'Lu', '1993-10-05', 12345);
 console.log(student1);

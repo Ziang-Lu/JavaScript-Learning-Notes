@@ -4,12 +4,6 @@
 
 Basically, `JavaScript` scopes works very similar to `Python`
 
-**Some exceptions:**
-
-* Curly braces in JavaScript doesn't necessarily create a scope.
-  * Code blocks created by the <u>curly braces of `if` / `for` / `while`, do NOT create scopes</u>.
-  * Only the code blocks created by the <u>curly braces of functions, create scopes</u>.
-
 <br>
 
 ## In-Memory Scope (内存作用域) / Execution Context (执行上下文)

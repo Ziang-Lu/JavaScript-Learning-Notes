@@ -41,7 +41,7 @@ console.log(converted);
 console.log(JSON.parse(converted));
 console.log();
 
-// *** Inheritance / Prototype Chaining ***
+// *** "Inheritance" / Prototype Chaining ***
 // We can define an object to be the "prototype" of another object.
 // Essentially, this is like "copyping" or "extending" from the original object.
 // e.g., a -> b
@@ -49,4 +49,5 @@ console.log();
 //       upstream along the prototype chain, and the interpreter will look up
 //       the field in a.
 const umbrellaChild = Object.create(umbrella);
-// The field lookup of every JavaScript, EVENTUALLY, delegates to "Object".
+// The field lookup of every JavaScript object, EVENTUALLY, delegates to
+// "Object.prototype".
