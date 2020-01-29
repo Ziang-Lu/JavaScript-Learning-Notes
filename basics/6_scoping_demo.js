@@ -8,11 +8,10 @@ function getRandElem(arr) {
   return arr[randIdx];
 }
 
-const NAMES = ['Alice', 'Bob', 'Chris', 'David', 'Ella', 'Frank', 'Gary'];
-
 /**
  * Returns a random character from the characters.
- * This function is create from a function self-invocation, to create a closure.
+ * This function is created from a function self-invocation, to create a
+ * closure.
  * Feel free to check out my notes on closure.
  * @returns {string} randomly returned character
  */
@@ -42,7 +41,8 @@ function getFoil(hero) {
 
 /**
  * Returns a random deed from the deeds.
- * This function is create from a function self-invocation, to create a closure.
+ * This function is created from a function self-invocation, to create a
+ * closure.
  * Feel free to check out my notes on closure.
  * @returns {string} randomly returned character
  */
@@ -68,21 +68,58 @@ function newSaga() {
   });
 }
 
+console.log('First invokation...');
+
 newSaga();
 sagas[0]();
 console.log();
 sagas[0]();
 console.log();
 
-// newSaga();
+// Hero: Chris
+// First invokation...
+// Foil: Alice
+// ===== SAGA function =====
+// Generated deed: Eyes
+// Chris Eyes Alice
+// ===== End =====
 
-// This will work.
-// And note the output, we see that sagas[0] function REMEMBERS that "foil"
-// variable, which is in the context which the sagas[0] function is defined in.
+// ===== SAGA function =====
+// Generated deed: Stares
+// Chris Stares Alice
+// ===== End =====
 
-// sagas[0]();
-// console.log();
-// sagas[1]();
-// console.log();
-// sagas[0]();
-// console.log();
+// The function at sagas[0] REMEMBERS the outer "foil", so these two invokations
+// outputs the same foil "Alice".
+
+console.log('Second invocation...');
+
+newSaga();
+sagas[0]();
+console.log();
+sagas[1]();
+console.log();
+sagas[0]();
+
+// Foil: Frank
+// ===== SAGA function =====
+// Generated deed: Tops
+// Chris Tops Alice
+// ===== End =====
+
+// Still, sagas[0] REMEMBERS its same foil "Alice".
+
+// ===== SAGA function =====
+// Generated deed: Tips
+// Chris Tips Frank
+// ===== End =====
+
+// However, for sagas[1], it generates a new "foil" called "Frank", and it
+// REMEMBERS that new foil "Frank".
+
+// ===== SAGA function =====
+// Generated deed: Eyes
+// Chris Eyes Alice
+// ===== End =====
+
+// Still, sagas[0] REMEMBERS its same foil "Alice".

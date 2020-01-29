@@ -24,7 +24,7 @@ setTimeout(
 function setTimeoutWithPromise(timeout) {
   return new Promise((resolve, reject) => {
     if (typeof timeout !== 'number') {
-      reject(new Error('timeout should be a valid number'));
+      reject(Error('timeout should be a valid number'));
     } else {
       setTimeout(resolve, timeout);
     }
@@ -54,7 +54,7 @@ function checkExistWithCallback(path, existHandler, notExistHandler) {
     if (exists) {
       existHandler();
     } else {
-      notExistHandler(new Error('Path does not exist'));
+      notExistHandler(Error('Path does not exist'));
     }
   });
 }
@@ -76,7 +76,7 @@ function checkExistsWithPromise(path) {
       if (exists) {
         resolve();
       } else {
-        reject(new Error('Path does not exist'));
+        reject(Error('Path does not exist'));
       }
     });
   });

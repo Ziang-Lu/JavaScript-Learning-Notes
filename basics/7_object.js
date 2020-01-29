@@ -1,8 +1,8 @@
-/*
-IMPORTANT!!!
-An object in JavaScript is essentially a MAP, which is just a group of key-value
-pairs, where a value can be either a property or a method.
+/**
+ * An object in JavaScript is essentially a group of key-value pairs, where a
+ * value can be either a property or a method.
  */
+
 const umbrella = {
   color: 'pink',
   isOpen: false,

@@ -22,7 +22,7 @@ These repo contains course notes in the following courses
 
 6. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/6_scoping_demo.js">Scopes and Closures</a>
 
-7. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/7_object_(map).js">Object (Map)</a>
+7. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/7_object.js">Object</a>
 
 8. OOP
 
