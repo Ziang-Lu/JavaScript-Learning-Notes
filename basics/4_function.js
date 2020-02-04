@@ -108,9 +108,3 @@ TRICKY!!!
 Function expressions are not "hoisted" since they involve variable assignment,
 so JavaScript will not interpret it until it reaches that line.
  */
-
-// ====================
-// Variables defined by "var" keyword are also "hoisted".
-// e.g.,
-// console.log(a);
-// var a = 10;
