@@ -44,13 +44,6 @@ class Person {
   }
 }
 
-person1 = new Person('Ziang', 'Lu', '1993-10-05');
-console.log(person1);
-console.log(person1.getFullName()); // Ziang Lu
-console.log(person1.getBirthYear()); // 1993
-console.log(Person.topNames()); // ['Mark', 'Lily']
-console.log();
-
 // Inheritance
 /**
  * Student class.
@@ -68,8 +61,3 @@ class Student extends Person {
     this.studentId = studentId;
   }
 }
-
-student1 = new Student('Kevin', 'Lue', '1993-10-05', 12345);
-console.log(student1);
-console.log(student1.getFullName()); // Kevin Lue
-console.log(student1.getBirthYear()); // 1993

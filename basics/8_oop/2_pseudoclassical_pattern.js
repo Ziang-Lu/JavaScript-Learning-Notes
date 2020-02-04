@@ -41,6 +41,9 @@ console.log(person1);
 console.log(person1.getFullName()); // Ziang Lu
 console.log(person1.getBirthYear()); // 1993
 console.log(Person.topNames()); // ['Mark', 'Lily']
+
+console.log(Object.getPrototypeOf(person1) === Person.prototype); // true
+
 console.log();
 
 // Inheritance
@@ -61,9 +64,14 @@ function Student(firstName, lastName, dateOfBirth, studentId) {
 Student.prototype = Object.create(Person.prototype); // At this point, Student.prototype simply delegates to Person.prototype.
 Student.prototype.constructor = Student; // However, we must manually add the constructor property; otherwise calling "Student.prototype.constructor" would be delegated to Person.protype, which results in Person.
 
+// Demo
 const student1 = new Student('Ziang', 'Lu', '1993-10-05', 12345);
 console.log(student1);
 console.log(student1.getFullName()); // Kevin Lue
 console.log(student1.getBirthYear()); // 1993
+
+console.log(Object.getPrototypeOf(student1) === Student.prototype); // true
+console.log(Object.getPrototypeOf(student1) === Person.prototype); // false
+
 console.log(student1 instanceof Student); // true
 console.log(student1 instanceof Person); // true

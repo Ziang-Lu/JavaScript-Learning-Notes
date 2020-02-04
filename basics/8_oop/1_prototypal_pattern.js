@@ -47,5 +47,10 @@ console.log(person1);
 console.log(person1.getFullName()); // Ziang Lu
 console.log(person1.getBirthYear()); // 1993
 console.log(Person.topNames()); // ['Mark', 'Lily']
+
+console.log(Object.getPrototypeOf(person1) === Person.prototype); // true
+
 console.log(person1 instanceof Person); // true
-console.log();
+// "instanceof" operator本质上是object做property lookup时, 是否会找Class.prototype
+// => In this case, "person1" refers to "person" object in "Person()" function,
+//    which delegates to Person.prototype, so the above returns true.

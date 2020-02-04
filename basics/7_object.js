@@ -7,7 +7,15 @@ const umbrella = {
   color: 'pink',
   isOpen: false,
 
-  open: () => {
+  // IMPORTANT NOTE!!!!!
+  // For a JavaScript object, we should use the plain-old function() definition
+  // rather than arrow functions to define methods, because they behave
+  // differently about "this" keyword binding:
+  // - Plain-old function() defition binds "this" keyword to the object itself;
+  // - Arrow functions CANNOT correctly bind "this" keyword to the corresponding
+  //   object.
+
+  open: function() {
     if (this.isOpen) {
       return 'This umbrella is already open.';
     } else {
@@ -16,7 +24,7 @@ const umbrella = {
     }
   },
 
-  close: () => {
+  close: function() {
     if (this.isOpen) {
       this.isOpen = false;
       return 'Successfully closed the umbrella!';
@@ -28,6 +36,12 @@ const umbrella = {
 
 console.log(umbrella);
 console.log(`Type of umbrella: ${typeof umbrella}`); // object
+// Check for property
+console.log(umbrella.hasOwnProperty('open')); // true
+console.log();
+
+console.log(umbrella.open());
+console.log(umbrella.close());
 console.log();
 
 // *** Keys & Values ***
@@ -51,3 +65,6 @@ console.log();
 const umbrellaChild = Object.create(umbrella);
 // The field lookup of every JavaScript object, EVENTUALLY, delegates to
 // "Object.prototype".
+
+// Check for property along the prototype chain
+console.log('open' in umbrellaChild); // true

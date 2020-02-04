@@ -178,7 +178,7 @@ console.log(sortedCopy); // [1, 2, 4, 5, 7, 8, 10, undefined]
 
 console.log();
 
-// *** Array.prototype.every() Method ***
+// *** Array.prototype.some() Method ***
 let myArray = [1, 2, 3, 4, 5];
 console.log('The array:');
 console.log(myArray); // [1, 2, 3, 4, 5]
@@ -189,6 +189,18 @@ console.log();
 console.log('The array:');
 console.log(myArray);
 console.log(arr.every(val => val > 0)); // true
+console.log();
+
+// *** Array.prototype.find() Method ***
+console.log('The array:');
+console.log(myArray);
+console.log(myArray.find(val % 2 === 0)); // 2
+console.log();
+
+// *** Array.prototype.findIndex() Method ***
+console.log('The array:');
+console.log(myArray);
+console.log(myArray.findIndex(val % 2 === 0)); // 1
 console.log();
 
 // *** Array.prototype.forEach() Method ***

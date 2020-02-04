@@ -6,6 +6,40 @@ Basically, `JavaScript` scopes works very similar to `Python`
 
 <br>
 
+***
+
+**IMPORTANT!!!!!**
+
+在JS中, `function`定义会创建function scope, 而其他的`if`/`switch`/`for`/`while`/`try`等block会创建block scope.
+
+=> 在blocks中定义的`var`变量依然会从属于该block所属的function scope:
+
+```javascript
+if (true) {
+  var x = 5;
+  // 尽管var x定义在了if block里边, 其仍然属于if block所属的global scope
+}
+
+console.log(x); // 5
+```
+
+而在ES6引入了`let`/`const`之后, 在blocks中定义的`let`/`const`变量会从属于该block的block scope: **INTUITIVE!!!!!**
+
+```javascript
+if (true) {
+  const x = 5;
+  // let x定义在了if block里边, 其只属于if block所创建的block scope
+}
+
+console.log(x); // ReferenceError
+```
+
+
+
+***
+
+<br>
+
 ## In-Memory Scope (内存作用域) / Execution Context (执行上下文)
 
 <u>As the program runs</u>, it'll be building up internal data stores for keeping track of all the variables that are available to different function objects.
@@ -57,6 +91,8 @@ console.log(add()); // 3
 
 * Data privacy (as described above)
 
+  For a more detailed example, check out `6_closure_demo/`
+
 * 实现partial functions:
 
   ```javascript
@@ -75,4 +111,4 @@ console.log(add()); // 3
   console.log(add10(5)); // 15
   ```
 
-  
+
