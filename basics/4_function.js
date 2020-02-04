@@ -32,44 +32,6 @@ console.log(func()); // undefined
 
 console.log();
 
-// *** Hoisting ***
-
-const avg = calcAvg(5, 9); // Call a function before its declaration (definition)
-// Is it possible?
-
-/**
- * Calculates the average between the given two numbers.
- * @param {number} a first number
- * @param {number} b second number
- * @returns {number} average of the given two numbers.
- */
-function calcAvg(a, b) {
-  return (a + b) / 2;
-}
-
-console.log(avg); // 7
-// It is possible!
-
-/*
-This feature is called "hoisting".
-Before the codes are executed, all normal function declarations (definition) are
-"hoisted" to the top of the current scope, so that it can be used later in the
-program.
-i.e., In the example above, before the codes are executed, JavaScript engine
-will automatically "hoist" the declaration (definition) of the function
-"calcAvg()" to the top of the global scope, and then execute the codes, so that
-the above codes are in effect rearranged by JavaScript engine to:
-
-function calAvg(a, b) {
-  return (a + b) / 2;
-}
-
-let avg = calcAvg(5, 9);
-console.log(avg);
- */
-
-console.log();
-
 // ***** Function Expression *****
 // (When a function is assigned to a variable)
 
@@ -102,9 +64,3 @@ const printFavoriteMovie = movie =>
 
 movieProcessing(printFavoriteMovie, 'Finding Nemo'); // My favorate movie is Finding Nemo.
 movieProcessing(printFavoriteMovie); // My favorate movie is Titanic.
-
-/*
-TRICKY!!!
-Function expressions are not "hoisted" since they involve variable assignment,
-so JavaScript will not interpret it until it reaches that line.
- */
