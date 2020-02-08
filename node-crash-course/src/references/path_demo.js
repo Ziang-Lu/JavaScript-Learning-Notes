@@ -1,4 +1,3 @@
-// Common JS importing
 const path = require('path');
 
 // Full path

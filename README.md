@@ -130,6 +130,22 @@ These repo contains course notes in the following courses
 
 <br>
 
+## Asynchronous Requests (AJAX)
+
+1. Native `XMLHttpRequest` or simply `"XHR"`, through callbacks
+
+   Check out `ajax/1-xhr-callback`
+
+2. `jQuery` `.ajax()` method, through callbacks
+
+   
+
+3. `fetch()-API`, through `Promise`
+
+4. `fetch()-API`, through `async/await` syntax
+
+<br>
+
 ## `Node.js` Runtime
 
 ### Basics
@@ -153,7 +169,7 @@ These repo contains course notes in the following courses
 
   Common built-in functions that are asynchronous and accept callback functions:
 
-  * `setTimeout(function, delay)` / `setInterval(function, delay)`
+  * `setTimeout(function, delay)`
 
     ```javascript
     function getAsyncMessage(cb) {
@@ -176,6 +192,10 @@ These repo contains course notes in the following courses
 
     Check out `async/1-callback/mylogger.js`
 
+  ***
+
+  **Callback Hell (回调地狱)**
+
   For serveral functions, if we want to <u>ensure the correct execution order</u>, we <u>may need to chain these functions as callbacks</u>.
 
   => <u>Chaining a lot of callback functions => "Callback hell (回调地狱)"</u>
@@ -185,35 +205,35 @@ These repo contains course notes in the following courses
   ```javascript
   const fs = require('fs');
   const path = require('path');
-
+  
   const testFolderName = path.join(__dirname, 'test');
   const filename = path.join(testFolderName, 'hello.txt');
-
+  
   // In order to enture the correct execution order, we need to chain the
   // functions as callbacks, resulting in a long callback chain, which is referred
   // to as "callback hell".
-
+  
   // Create folder
   fs.mkdir(testFolderName, null, err => {
     if (err) throw err;
     console.log('Folder created.');
-
+  
     // Create file
     // (Equivalent to writing to file)
     fs.writeFile(filename, 'Hello, world!', err => {
       if (err) throw err;
       console.log('Data written.');
-
+  
       // Write (Append) to file
       fs.appendFile(filename, ' I love Node.js!', err => {
         if (err) throw err;
         console.log('Date appended.');
-
+  
         // Read file
         fs.readFile(filename, 'utf8', (err, data) => {
           if (err) throw err;
           console.log(`Read data: ${data}`);
-
+  
           // Rename file
           fs.rename(
             filename,
@@ -229,6 +249,8 @@ These repo contains course notes in the following courses
   });
   ```
 
+  ***
+
 * **`Promise` (since ES6 / ES2015)**
 
   * For usage, check out `async/2-promise/fetch_promise.js`, which contains the following code snippet:
@@ -236,10 +258,8 @@ These repo contains course notes in the following courses
     ```javascript
     const fetch = require('node-fetch');
 
-    // fetch()-API returns a Promise
-
     // GET request
-    fetch('https://jsonplaceholder.typicode.com/users')
+fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
       .then(users => {
         users.forEach(userData => {
@@ -255,26 +275,26 @@ These repo contains course notes in the following courses
     // Any error that happens along the chain, the execution flow goes to the
     // "catch()" function.
     ```
-
+    
   * From <u>"callback hell"</u> to <u>Promise</u>, check out `src/async/2-promise/promise_basics.js` as follows:
 
     ```javascript
-    const fs = require('fs');
-
+  const fs = require('fs');
+  
     const somePath = 'test.txt';
 
     function myExistHandler() {
-      console.log('File exists');
+    console.log('File exists');
     }
-
+  
     function myNotExistHandler(err) {
-      console.error(err);
+    console.error(err);
     }
-
+  
     // Originally, with callback functions, we would use "fs.exists()" like this:
 
     function checkExistWithCallback(path, existHandler, notExistHandler) {
-      fs.exists(path, exists => {
+    fs.exists(path, exists => {
         if (exists) {
           existHandler();
         } else {
@@ -282,21 +302,21 @@ These repo contains course notes in the following courses
         }
       });
     }
-
+  
     checkExistWithCallback(somePath, myExistHandler, myNotExistHandler);
 
     // In order to avoid "callback hell", we want to do the same thing with Promise
-    // like this.
-
+  // like this.
+  
     // checkExistsWithPromise(somePath)
-    //   .then(myExistHandler)
+  //   .then(myExistHandler)
     //   .catch(myNotExistHandler);
-
+  
     // If we want to the above, we must let "checkExistsWithPromise()" return a
-    // Promise (in which we do the necessary work).
-
+  // Promise (in which we do the necessary work).
+  
     function checkExistsWithPromise(path) {
-      return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         fs.exists(path, exists => {
           if (exists) {
             resolve();
@@ -306,21 +326,21 @@ These repo contains course notes in the following courses
         });
       });
     }
-
+  
     checkExistsWithPromise(somePath)
-      .then(myExistHandler)
+    .then(myExistHandler)
       .catch(myNotExistHandler);
     ```
-
+  
   * For advantage usage of Promises, including <u>sequential execution (chaining) of multiple Promises</u>, or <u>parallel execution</u>, check out `async/2-promise/promise_advanced.js` as follows:
 
     ```javascript
-    const { cleanRoom, removeGarbage, winIceCream } = require('../common');
-
+  const { cleanRoom, removeGarbage, winIceCream } = require('../common');
+  
     console.log('With asynchronous programming, this line is printed first.');
 
     // Sequential execution (chaining)
-    cleanRoom()
+  cleanRoom()
       .then(msg => {
         console.log(msg);
         return removeGarbage();
@@ -334,9 +354,9 @@ These repo contains course notes in the following courses
         console.log('All finished');
       })
       .catch(err => console.log(err));
-
+  
     // Parallel execution
-    Promise.all([cleanRoom(), removeGarbage(), winIceCream()])
+  Promise.all([cleanRoom(), removeGarbage(), winIceCream()])
       .then(values => {
         console.log(values);
         console.log('All finished');
@@ -344,7 +364,7 @@ These repo contains course notes in the following courses
       })
       .catch(err => console.log(err));
     ```
-
+  
     ***
 
     `Promise`有点类似于`Python`中的`coroutine`:
@@ -373,18 +393,17 @@ These repo contains course notes in the following courses
   
     ```javascript
     /**
-    ```
-   * Same thing as "fetch_promise.js", but with "async/await" syntax sugar.
+     * Same thing as "fetch_promise.js", but with "async/await" syntax sugar.
      */
-  
+    
     const fetch = require('node-fetch');
-  
+    
     // fetch()-API returns a Promise
-  
+    
     // GET request
-  async function fetchUsers() {
+    async function fetchUsers() {
       // This "async" function returns a Promise
-  
+    
       try {
         const response = await fetch('https://jsonplaceholder.typicode.com/users');
         const users = await response.json(); // response.json() also returns a Promise
@@ -394,26 +413,26 @@ These repo contains course notes in the following courses
             username: userData.username,
             email: userData.email
           };
-        console.log(simplified);
+          console.log(simplified);
         });
       } catch (err) {
-      console.error(err);
+        console.error(err);
       }
-    console.log();
+      console.log();
     }
-  
-  fetchUsers();
+    
+    fetchUsers();
     ```
   
 * For usage of Promises with `async/await` syntax sugar, check out `async/3-async-await/promise_async_await.js` as follows:
   
     ```javascript
     const { cleanRoom, removeGarbage, winIceCream } = require('../common');
-  
+    
     // Sequential execution (chaining)
     async function myRoutine() {
       // This "async" function returns a Promise
-  
+    
       try {
         let msg = await cleanRoom();
         console.log(msg);
@@ -426,7 +445,7 @@ These repo contains course notes in the following courses
         console.error(err);
     }
     }
-  
+    
   myRoutine();
   
     // 使得程序looks and feels like synchronous, 虽然实际上只是syntax sugar, under the
@@ -450,7 +469,7 @@ These repo contains course notes in the following courses
     }
   
     myRoutineParallel();
-    ```
+  ```
 
 <br>
 

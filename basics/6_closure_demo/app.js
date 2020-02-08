@@ -8,7 +8,7 @@ const eventFuncs = (() => {
   const content = document.querySelector('#reporter');
 
   // Private helper function
-  function loadInfo(msg, eventObj) {
+  const loadInfo = (msg, eventObj) => {
     content.insertAdjacentHTML(
       'afterbegin',
       msg +
@@ -18,7 +18,7 @@ const eventFuncs = (() => {
         eventObj.target.nodeName +
         '<br>'
     );
-  }
+  };
 
   // Only expose functions which we want to be globally accessible
   return {
@@ -34,18 +34,18 @@ const eventFuncs = (() => {
 
     addListeners: () => {
       // Add "keydown" event & listener
-      function keyDownHandler(e) {
+      const keyDownHandler = e => {
         loadInfo(`A key was pressed: ${e.keyCode} -- ${e.key}`, e);
         if (e.ctrlKey && e.keyCode === 83) {
           // Press "ctrl + S"
           toggleEventListeners();
         }
-      }
+      };
       document.addEventListener('keydown', keyDownHandler);
       listeners['keydown'] = keyDownHandler;
 
       // Add "mousemove" event & listener
-      function mouseMoveListener(e) {
+      const mouseMoveListener = e => {
         if (printIt) {
           printIt = false;
           loadInfo(
@@ -54,7 +54,7 @@ const eventFuncs = (() => {
           );
           setTimeout(() => (printIt = true), 500);
         }
-      }
+      };
       document.addEventListener('mousemove', mouseMoveListener);
       listeners['mousemove'] = mouseMoveListener;
 

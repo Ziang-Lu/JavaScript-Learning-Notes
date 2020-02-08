@@ -21,7 +21,7 @@ setTimeout(
  * @param {number} timeout delay time in miliseconds
  * @returns {Promise} promise wrapping setTimeout()
  */
-function setTimeoutWithPromise(timeout) {
+const setTimeoutWithPromise = timeout => {
   return new Promise((resolve, reject) => {
     if (typeof timeout !== 'number') {
       reject(Error('timeout should be a valid number'));
@@ -29,7 +29,7 @@ function setTimeoutWithPromise(timeout) {
       setTimeout(resolve, timeout);
     }
   });
-}
+};
 
 setTimeoutWithPromise()
   .then(console.log('This is from the "resolve()" callback of a Promise'))
@@ -37,19 +37,19 @@ setTimeoutWithPromise()
 
 // ----------------------------------------------------------------------------
 
-function myExistHandler() {
+const myExistHandler = () => {
   console.log('File exists');
-}
+};
 
-function myNotExistHandler(err) {
+const myNotExistHandler = err => {
   console.error(err);
-}
+};
 
 const somePath = 'fetch_demo.js';
 
 // Originally, with callback functions, we would use "fs.exists()" like this:
 
-function checkExistWithCallback(path, existHandler, notExistHandler) {
+const checkExistWithCallback = (path, existHandler, notExistHandler) => {
   fs.exists(path, exists => {
     if (exists) {
       existHandler();
@@ -57,7 +57,7 @@ function checkExistWithCallback(path, existHandler, notExistHandler) {
       notExistHandler(Error('Path does not exist'));
     }
   });
-}
+};
 
 checkExistWithCallback(somePath, myExistHandler, myNotExistHandler);
 
@@ -70,7 +70,7 @@ checkExistWithCallback(somePath, myExistHandler, myNotExistHandler);
 // If we want the above, we must let "checkExistsWithPromise()" return a Promise
 // (in which we do the necessary work).
 
-function checkExistsWithPromise(path) {
+const checkExistsWithPromise = path => {
   return new Promise((resolve, reject) => {
     fs.exists(path, exists => {
       if (exists) {
@@ -80,7 +80,7 @@ function checkExistsWithPromise(path) {
       }
     });
   });
-}
+};
 
 checkExistsWithPromise(somePath)
   .then(myExistHandler)

@@ -1,12 +1,12 @@
-// TODO: Read docs about fetch()-API
-
+/*
+ fetch()-API is natively supported in browsers, not in Node.js, so we need a
+ third-party module.
+ */
 const fetch = require('node-fetch');
-
-// fetch()-API returns a Promise
 
 // GET request
 fetch('https://jsonplaceholder.typicode.com/users')
-  .then(response => response.json()) // response.json() also returns a Promise
+  .then(response => response.json())
   .then(users => {
     users.forEach(userData => {
       const simplified = {
@@ -19,8 +19,6 @@ fetch('https://jsonplaceholder.typicode.com/users')
     console.log();
   })
   .catch(err => console.error(err));
-// Any error that happens along the chain, the execution flow goes to the
-// "catch()" function.
 
 // POST request
 fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -34,7 +32,7 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
     content: 'Some content...'
   })
 })
-  .then(response => response.json()) // response.json() also returns a Promise
+  .then(response => response.json())
   .then(newPost => console.log(newPost))
   .catch(err => console.err(err));
 

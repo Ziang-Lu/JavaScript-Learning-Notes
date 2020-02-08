@@ -44,16 +44,16 @@ Promise.all([cleanRoom(), removeGarbage(), winIceCream()])
  * @param {string} url URL to fetch
  * @returns {object} result JSON
  */
-function getJSON(url) {
+const getJSON = url => {
   return fetch(url).then(response => response.json());
-}
+};
 
 /**
  * Fetches the given URLs in parallel, and display the results in order.
  * @param {Array} urls list of URLs
  * @returns {undefined}
  */
-function fetchingParallelDisplayInOrder(urls) {
+const fetchingParallelDisplayInOrder = urls => {
   // Fetch all the URLs in parallel
   const jsonPromises = urls.map(getJSON);
 
@@ -65,4 +65,4 @@ function fetchingParallelDisplayInOrder(urls) {
   // In this way, we created a sequence of promises. A "console.log()" will not
   // execute until all the previous promises (groups of "getJSON" + "then")
   // resolve.
-}
+};

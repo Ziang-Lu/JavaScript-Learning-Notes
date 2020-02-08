@@ -1,5 +1,3 @@
-// TODO: Read docs about "url" module
-
 const url = require('url');
 
 const myUrl = new url.URL(

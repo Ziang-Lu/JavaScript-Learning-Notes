@@ -49,6 +49,22 @@ console.log(Object.keys(umbrella)); // ['color', 'isOpen', 'open', 'close']
 console.log(Object.values(umbrella)); // ['pink', true, [Function: open], [Function: close]]
 console.log();
 
+// *** Freezing ***
+// Normally, an object declared with "const" can be freely add, update, or
+// remove attributes, as long as that object still points to the same object.
+// If we really want a frozen object that disallow modifications:
+const obj = Object.freeze({ a: 1 });
+// In order to totally freeze an object, use the following function:
+const freeze = obj => {
+  Object.freeze(obj);
+  Object.keys(obj).forEach(key => {
+    if (typeof key === 'object') {
+      // Recursively call freeze()
+      freeze(obj[key]);
+    }
+  });
+};
+
 // *** JSON Convertion ***
 const converted = JSON.stringify(umbrella);
 console.log(converted);

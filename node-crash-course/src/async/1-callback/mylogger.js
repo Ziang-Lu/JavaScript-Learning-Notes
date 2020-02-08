@@ -1,4 +1,4 @@
-// TODO: Read docs about "path" and "uuidv4" module
+// TODO: Read docs about "uuidv4" module
 
 const EventEmitter = require('events');
 const fs = require('fs');

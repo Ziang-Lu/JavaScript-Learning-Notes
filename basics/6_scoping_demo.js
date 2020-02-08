@@ -3,10 +3,10 @@
  * @param {Array} arr given array
  * @returns {*} randomly returned element
  */
-function getRandElem(arr) {
+const getRandElem = arr => {
   const randIdx = Math.floor(Math.random() * arr.length);
   return arr[randIdx];
-}
+};
 
 /**
  * Returns a random character from the characters.
@@ -31,13 +31,13 @@ console.log(`Hero: ${hero}`);
  * @param {string} hero story hero
  * @returns {string} returned foil
  */
-function getFoil(hero) {
+const getFoil = hero => {
   let char = getChar();
   while (char === hero) {
     char = getChar();
   }
   return char;
-}
+};
 
 /**
  * Returns a random deed from the deeds.
@@ -55,7 +55,7 @@ const getDeed = (() => {
 
 const sagas = [];
 
-function newSaga() {
+const newSaga = () => {
   const foil = getChar();
   console.log(`Foil: ${foil}`);
 
@@ -66,7 +66,7 @@ function newSaga() {
     console.log(`${hero} ${deed} ${foil}`);
     console.log('===== End =====');
   });
-}
+};
 
 console.log('First invokation...');
 
