@@ -24,6 +24,77 @@ These repo contains course notes in the following courses
 
 7. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/7_object.js">Object</a>
 
+   ***
+
+   ### `this` Keyword Binding
+
+   Check out this article https://www.jianshu.com/p/c7edec329338 for details
+
+   **Brief Summary:**
+
+   * **Traditional `function()` definitions**
+
+     `this`的binding <u>发生在函数实际调用的时候</u>, *不同的函数实际调用方式, 决定了`this`的binding: 谁调用了这个函数, `this`就绑定至谁.*
+
+     1. 作为function调用
+
+        `this`绑定至global object
+
+     2. 作为object的method调用
+
+        `this`绑定至该object
+
+     3. 作为constructor (function class)调用
+
+        `this`绑定至新创建的instance
+
+     4. 间接调用 (即通过`.call(thisArg, ...)`, `.apply(thisArg, [...])`, `.bind(thisArg, ...)`)
+
+        `this`绑定至`.call()`, `.apply()`, `.bind()`的第一个参数`thisArg`
+
+   * **Arrow functions `=>` definitions**
+
+     `this`的binding <u>发生在函数定义的时候</u>, 其被绑定至arrow function定义时的外层上下文
+
+   ***
+
+   => 因此, 一般在object上定义methods时:
+
+   * 要使用`function()` definition, 这样才能在method实际调用的时候, 将`this`正确绑定至该object
+   * 若使用了arrow function, 则`this`被绑定至method定义时的外层上下文 (往往是global object), 是不对的
+
+   e.g.,
+
+   ```javascript
+   const umbrella = {
+     color: 'pink',
+     isOpen: false,
+   
+     open: function() {
+       if (this.isOpen) {
+         return 'This umbrella is already open.';
+       } else {
+         this.isOpen = true;
+         return 'Successfully opened the umbrella!';
+       }
+     }
+   
+     // If we do the following:
+     // open: () => {
+     //   if (this.isOpen) { // "this" binds to the outer context, which is the global object in this case, so "this.isOpen" is undefined.
+     //     return '...';
+     //   } else {
+     //     this.isOpen = true;
+     //     return '...';
+     //   }
+     // }
+   }
+   
+   umbrella.open(); // "this" binds to "umbrella" object
+   ```
+
+   ***
+
 8. OOP
 
    * <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/basics/8_oop/1_prototypal_pattern.js">Prototypal Pattern</a>

@@ -7,14 +7,6 @@ const umbrella = {
   color: 'pink',
   isOpen: false,
 
-  // IMPORTANT NOTE!!!!!
-  // For a JavaScript object, we should use the plain-old function() definition
-  // rather than arrow functions to define methods, because they behave
-  // differently about "this" keyword binding:
-  // - Plain-old function() defition binds "this" keyword to the object itself;
-  // - Arrow functions CANNOT correctly bind "this" keyword to the corresponding
-  //   object.
-
   open: function() {
     if (this.isOpen) {
       return 'This umbrella is already open.';
@@ -24,6 +16,16 @@ const umbrella = {
     }
   },
 
+  // If we do the following:
+  // open: () => {
+  //   if (this.isOpen) { // "this" binds to the outer context, which is the global object in this case, so "this.isOpen" is undefined.
+  //     return '...';
+  //   } else {
+  //     this.isOpen = true;
+  //     return '...';
+  //   }
+  // },
+
   close: function() {
     if (this.isOpen) {
       this.isOpen = false;
@@ -31,6 +33,11 @@ const umbrella = {
     } else {
       return 'This umbrella is already closed!';
     }
+  },
+
+  // Define getter method
+  get matchColors() {
+    return ['blue', 'purple', 'yellow'];
   }
 };
 
@@ -42,6 +49,8 @@ console.log();
 
 console.log(umbrella.open());
 console.log(umbrella.close());
+console.log();
+console.log(`Matching colors: ${umbrella.matchColors}`); // Since matchColor() is defined as a getter method, access it like accessing a property
 console.log();
 
 // *** Keys & Values ***
