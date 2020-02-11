@@ -42,6 +42,7 @@ console.log(person1.getFullName()); // Ziang Lu
 console.log(person1.getBirthYear()); // 1993
 console.log(Person.topNames()); // ['Mark', 'Lily']
 
+// Prototype chaining validation
 console.log(Object.getPrototypeOf(person1) === Person.prototype); // true
 
 console.log();
@@ -56,22 +57,35 @@ console.log();
  * @param {number} studentId student ID
  */
 function Student(firstName, lastName, dateOfBirth, studentId) {
-  Person.call(this, firstName, lastName, dateOfBirth);
+  Person.call(this, firstName, lastName, dateOfBirth); // 继承properties
   this.studentId = studentId;
 }
 
-// Inheritance的本质上是prototype chaining
+// Inheritance的本质上是prototype chaining (继承methods)
 Student.prototype = Object.create(Person.prototype); // At this point, Student.prototype simply delegates to Person.prototype.
-Student.prototype.constructor = Student; // However, we must manually add the constructor property; otherwise calling "Student.prototype.constructor" would be delegated to Person.protype, which results in Person.
+Student.prototype.constructor = Student; // However, we must manually add the constructor property; otherwise calling "Student.prototype.constructor" would be delegated to Person.prototype, which results in Person.
+
+// (继承static methods)
+// 由于static methods是直接定义在了Person这个"function class"本身上的, 因此为了继承
+// static methods, 还需要定义"function class"本身的prototype chaining关系, 使得
+// Student delegates to Person
+Student.__proto__ = Person;
+
+Student.prototype.getStudentId = function() {
+  return this.studentId;
+};
 
 // Demo
-const student1 = new Student('Ziang', 'Lu', '1993-10-05', 12345);
-console.log(student1);
-console.log(student1.getFullName()); // Kevin Lue
-console.log(student1.getBirthYear()); // 1993
+const stu = new Student('Ziang', 'Lu', '1993-10-05', 12345);
+console.log(stu);
+console.log(stu.getFullName()); // Kevin Lue
+console.log(stu.getBirthYear()); // 1993
+console.log(stu.getStudentId()); // 12345
+console.log(Student.topNames()); // ['Mark', 'Lily']
 
-console.log(Object.getPrototypeOf(student1) === Student.prototype); // true
-console.log(Object.getPrototypeOf(student1) === Person.prototype); // false
+// Prototype chaining validation
+console.log(Object.getPrototypeOf(stu) === Student.prototype); // true
+console.log(Object.getPrototypeOf(stu) === Person.prototype); // false
 
-console.log(student1 instanceof Student); // true
-console.log(student1 instanceof Person); // true
+console.log(stu instanceof Student); // true
+console.log(stu instanceof Person); // true

@@ -60,4 +60,13 @@ class Student extends Person {
     super(firstName, lastName, dateOfBirth);
     this.studentId = studentId;
   }
+
+  /**
+   * Accessor of studentId.
+   * Note how this is defined as a getter method.
+   * @returns {number} studentId
+   */
+  get getStudentId() {
+    return this.studentId;
+  }
 }

@@ -157,13 +157,19 @@ These repo contains course notes in the following courses
      
      // Inheritance
      function Student(firstName, lastName, dateOfBirth, studentId) {
-       Person.call(this, firstName, lastName, dateOfBirth);
+       Person.call(this, firstName, lastName, dateOfBirth); // 继承properties
        this.studentId = studentId;
      }
      
-     // Inheritance的本质上是prototype chaining
+     // Inheritance的本质上是prototype chaining (继承methods)
      Student.prototype = Object.create(Person.prototype); // At this point, Student.prototype simply delegates to Person.prototype.
-     Student.prototype.constructor = Student; // However, we must manually add the constructor property; otherwise calling "Student.prototype.constructor" would be delegated to Person.protype, which results in Person.
+     Student.prototype.constructor = Student; // However, we must manually add the constructor property; otherwise calling "Student.prototype.constructor" would be delegated to Person.prototype, which results in Person.
+     
+     // (继承static methods)
+     // 由于static methods是直接定义在了Person这个"function class"本身上的, 因此为了继承
+     // static methods, 还需要定义"function class"本身的prototype chaining关系, 使得
+     // Student delegates to Person
+     Student.__proto__ = Person;
      ```
 
    * <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/basics/8_oop/3_es6.js">ES6 Pattern</a>
@@ -195,6 +201,10 @@ These repo contains course notes in the following courses
        constructor(firstName, lastName, dateOfBirth, studentId) {
          super(firstName, lastName, dateOfBirth);
          this.studentId = studentId;
+       }
+     
+       get getStudentId() {
+         return this.studentId;
        }
      }
      ```
