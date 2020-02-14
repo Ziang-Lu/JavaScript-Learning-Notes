@@ -1,59 +1,19 @@
-// /**
-//  * Shows a Todo object that has the given schema.
-//  * @param todo Todo object with the given schema
-//  */
-// function showTodo(todo: {title: string, text: string}) {
-//   console.log(`${todo.title}: ${todo.text}`);
-// }
-
-/**
- * Todo interface.
- */
-interface Todo {
-  title: string;
-  text: string;
-}
-
-/**
- * Shows the given Todo object.
- * @param todo Todo object
- */
-function showTodo(todo: Todo): void {
-  console.log(`${todo.title}: ${todo.text}`);
-}
-
-const myTodo = {
-  title: 'Learn TypeScript',
-  text: 'Learn about TypeScript linting and VSCode integration'
-};
-showTodo(myTodo);
-
 /**
  * Person interface.
  */
 interface PersonInterface {
-  /**
-   * First name of this person.
-   */
-  firstName: string;
-  /**
-   * Last name of this person.
-   */
-  lastName: string;
-  /**
-   * Date of birth of this person.
-   */
-  dateOfBirth: Date;
+  // Note that we could have defined common variables here in the interface, but
+  // that would cause the variables to be "public"
 
   /**
    * Returns the full name of this person.
-   * @returns full name
+   * @returns {string} full name
    */
   getFullName(): string;
 
   /**
    * Returns the birth year of this person.
-   * @returns birth year of this person
+   * @returns {number} birth year of this person
    */
   getBirthYear(): number;
 }
@@ -70,11 +30,20 @@ class Person implements PersonInterface {
     return ['Mark', 'Lily'];
   }
 
-  public firstName: string;
+  /**
+   * First name of this person.
+   */
+  private firstName: string;
 
-  public lastName: string;
+  /**
+   * Last name of this person.
+   */
+  private lastName: string;
 
-  public dateOfBirth: Date;
+  /**
+   * Date of birth of this person.
+   */
+  private dateOfBirth: Date;
 
   /**
    * Constructor with parameter.
@@ -97,11 +66,11 @@ class Person implements PersonInterface {
   }
 }
 
-const person1: Person = new Person('Ziang', 'Lu', '1993-10-05');
+const person1 = new Person('Ziang', 'Lu', '1993-10-05');
 console.log(person1);
-console.log(Person.topNames()); // ['Mark', 'Lily']
 console.log(person1.getFullName()); // Ziang Lu
 console.log(person1.getBirthYear()); // 1993
+console.log(Person.topNames()); // ['Mark', 'Lily']
 console.log();
 
 // Inheritance
@@ -130,9 +99,20 @@ class Student extends Person {
     super(firstName, lastName, dateOfBirth);
     this.studentId = studentId;
   }
+
+  /**
+   * Accessor of studentId.
+   * Note how this is defined as a getter method.
+   * @returns {number} studentId
+   */
+  public get studentID(): number {
+    return this.studentId;
+  }
 }
 
-const student1: Student = new Student('Kevin', 'Lue', '1993-10-05', 12345);
-console.log(student1);
-console.log(student1.getFullName()); // Kevin Lue
-console.log(student1.getBirthYear()); // 1993
+const stu = new Student('Kevin', 'Lue', '1993-10-05', 12345);
+console.log(stu);
+console.log(stu.getFullName()); // Kevin Lue
+console.log(stu.getBirthYear()); // 1993
+console.log(stu.studentID); // 12345
+console.log(Student.topNames()); // ['Mark', 'Lily']

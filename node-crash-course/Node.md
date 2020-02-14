@@ -285,27 +285,27 @@
   
   myRoutine();
   
-    // 使得程序looks and feels like synchronous, 虽然实际上只是syntax sugar, under the
-    // hood还是asynchronous
+  // 使得程序looks and feels like synchronous, 虽然实际上只是syntax sugar, under the
+  // hood还是asynchronous
   
-    // Parallel execution
-    async function myRoutineParallel() {
-      // This "async" function returns a Promise
+  // Parallel execution
+  async function myRoutineParallel() {
+    // This "async" function returns a Promise
   
-      try {
-        const messages = await Promise.all([
-          cleanRoom(),
-          removeGarbage(),
-          winIceCream()
-      ]);
-        console.log(messages);
-        console.log('All finished');
-      } catch (err) {
-        console.error(err);
-      }
+    try {
+      const messages = await Promise.all([
+        cleanRoom(),
+        removeGarbage(),
+        winIceCream()
+    ]);
+      console.log(messages);
+      console.log('All finished');
+    } catch (err) {
+      console.error(err);
     }
+  }
   
-    myRoutineParallel();
+  myRoutineParallel();
   ```
 
 <br>
@@ -338,7 +338,7 @@ Node installations and versions are managed by NVM (Node Version Manager).
   $ nvm which current
   # /Users/Ziang_Lu/.nvm/versions/node/v13.5.0/bin/node
   $ node --version
-  # 13.5.0
+  # v13.5.0
   ```
 
 <br>

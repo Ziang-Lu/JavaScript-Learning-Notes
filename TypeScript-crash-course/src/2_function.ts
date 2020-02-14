@@ -3,9 +3,9 @@
  * @param x first addend
  * @param y seond addend
  */
-function add(x: number, y: number): number {
+const add = (x: number, y: number): number => {
   return x + y;
-}
+};
 
 console.log(add(1, 2));
 
@@ -14,13 +14,13 @@ console.log(add(1, 2));
  * @param firstName first name
  * @param lastName last name
  */
-function getFullName(firstName: string, lastName?: string): string {
+const getFullName = (firstName: string, lastName?: string): string => {
   // Since lastName is optional, it might be undefined, in which case we simply
   // return firstName.
   if (lastName === undefined) {
     return firstName;
   }
   return `${firstName} ${lastName}`;
-}
+};
 
-console.log('Ziang', 'Lu');
+console.log(getFullName('Ziang', 'Lu'));
