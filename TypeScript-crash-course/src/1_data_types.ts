@@ -34,14 +34,27 @@ let myAny: any;
 myAny = 42;
 myAny = 'Some string'; // Also works
 
+// unknown
+// Similar to "any", but do the checking when accessing properties and methods
+const myUnknown: unknown = 'Some string';
+console.log(myUnknown.toString()); // Throws an error
+console.log((myUnknown as string).toUpperCase()); // Need to use "type assertion" (similar to "type casting")
+
 // ***** Define Our Own Data Type *****
 
 // tuple
-type fixedTuple = [number?, string?]; // "?" means optional
-const numStrTuple: fixedTuple = [];
-numStrTuple.push(42);
-numStrTuple.push('Some string');
+type fixedTuple = [number, string];
+const numStrTuple: fixedTuple = [42, 'Some string'];
 
 // Actually, this is like an "enum"
 type Style = 23 | 'bold' | 'italic';
 const myFont: Style = 'italic';
+
+// The real "enum"
+enum Color {
+  Red,
+  Green,
+  Blue
+} // "enum" values starts with 0, and so on...
+const myColor: Color = Color.Green;
+console.log(myColor); // 1

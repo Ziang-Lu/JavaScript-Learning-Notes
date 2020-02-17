@@ -108,6 +108,15 @@ class Student extends Person {
   public get studentID(): number {
     return this.studentId;
   }
+
+  /**
+   * Mutator of studentId.
+   * Note how this is defined as a setter method.
+   * @param studentId student ID to set
+   */
+  public set studentID(studentId: number) {
+    this.studentId = studentId;
+  }
 }
 
 const stu = new Student('Kevin', 'Lue', '1993-10-05', 12345);

@@ -66,7 +66,16 @@ class Student extends Person {
    * Note how this is defined as a getter method.
    * @returns {number} studentId
    */
-  get getStudentId() {
+  get studentID() {
     return this.studentId;
+  }
+
+  /**
+   * Mutator of studentId.
+   * Note how this is defined as a setter method.
+   * @param studentId student ID to set
+   */
+  set studentID(studentId) {
+    this.studentId = studentId;
   }
 }

@@ -15,6 +15,7 @@ console.log(add(1, 2));
  * @param lastName last name
  */
 const getFullName = (firstName: string, lastName?: string): string => {
+  // "?" means optional
   // Since lastName is optional, it might be undefined, in which case we simply
   // return firstName.
   if (lastName === undefined) {

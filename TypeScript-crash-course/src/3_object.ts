@@ -3,7 +3,11 @@
 //  * @param todo Todo object with the given schema
 //  */
 // function showTodo(todo: { title: string; text: string }) {
-//   console.log(`${todo.title}: ${todo.text}`);
+//   if (todo.text === undefined) {
+//     console.log(todo.title);
+//   } else {
+//     console.log(`${todo.title}: ${todo.text}`);
+//   }
 //   // Show the remaining entries
 //   Object.keys(todo).forEach((key: string): void => {
 //     if (key !== 'title' && key !== 'text') {
@@ -17,7 +21,7 @@
  */
 interface Todo {
   title: string;
-  text: string;
+  text?: string;
   [key: string]: any; // Allow additional entries
 }
 
@@ -26,7 +30,11 @@ interface Todo {
  * @param todo Todo object
  */
 function showTodo(todo: Todo): void {
-  console.log(`${todo.title}: ${todo.text}`);
+  if (todo.text === undefined) {
+    console.log(todo.title);
+  } else {
+    console.log(`${todo.title}: ${todo.text}`);
+  }
   // Show the remaining entries
   Object.keys(todo).forEach((key: string): void => {
     if (key !== 'title' && key !== 'text') {
