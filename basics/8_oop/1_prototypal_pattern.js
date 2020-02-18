@@ -1,9 +1,8 @@
 /**
  * Old-fashioned Way 1: Prototypal Pattern
+ * This is very similar to a factory pattern.
  */
 
-// Define a "prototypal class", aka "functional class", which is essentially
-// still a function
 /**
  * Functional class for "Person".
  * @param {string} firstName first name of the person

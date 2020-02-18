@@ -66,10 +66,10 @@ const obj = Object.freeze({ a: 1 });
 // In order to totally freeze an object, use the following function:
 const freeze = obj => {
   Object.freeze(obj);
-  Object.keys(obj).forEach(key => {
+  Object.entries(obj).forEach((key, val) => {
     if (typeof key === 'object') {
       // Recursively call freeze()
-      freeze(obj[key]);
+      freeze(val);
     }
   });
 };

@@ -1,12 +1,11 @@
 /**
  * Old-fashioned Way 2: Pseudo-Classical Pattern
+ * This is also knowns as "prototypal inheritance".
  * The only difference is the way in which we use the functional class:
  * -> This time, we use the "new" keyword, which will handle a lot of work in
  *    the previous example for us.
  */
 
-// Define a "prototypal class", aka "functional class", which is essentially
-// still a function
 /**
  * Functional class for "Person".
  * @param {string} firstName first name of the person
@@ -69,7 +68,7 @@ Student.prototype.constructor = Student; // However, we must manually add the co
 // 由于static methods是直接定义在了Person这个"function class"本身上的, 因此为了继承
 // static methods, 还需要定义"function class"本身的prototype chaining关系, 使得
 // Student delegates to Person
-Student.__proto__ = Person;
+Object.setPrototypeOf(Student, Person);
 
 Student.prototype.getStudentId = function() {
   return this.studentId;

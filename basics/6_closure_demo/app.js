@@ -62,9 +62,9 @@ const eventFuncs = (() => {
     },
 
     removeListeners: () => {
-      for (let event of Object.keys(listeners)) {
-        document.removeEventListener(event, listeners[event]);
-      }
+      Object.entries(listeners).forEach(([event, listener]) => {
+        document.removeEventListener(event, listener);
+      });
     }
   };
 })();

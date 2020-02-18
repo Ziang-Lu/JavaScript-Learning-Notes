@@ -1,5 +1,6 @@
 /**
- * "Array" is just a special type of "Object".
+ * "Array" is just a special type of "Object", with the numerial indices as the
+ * keys.
  */
 
 let mixedData = [1, true, 'abcd', 'all the strings', null, undefined];

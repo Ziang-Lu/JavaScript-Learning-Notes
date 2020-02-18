@@ -2,9 +2,18 @@
 
 These repo contains course notes in the following courses
 
-* Intro to JavaScript on *Udacity*
-* Node.js crash course on YouTube https://www.youtube.com/watch?v=fBNz5xF-Kx4
-* TypeScript crash course on YouTube https://www.youtube.com/watch?v=rAy_3SIqT-E
+* **Intro to JavaScript** on Udacity
+* **Object-Oriented JavaScript** from *HackReactor* on Udacity
+* **Asynchronous JavaScript Requests** on Udacity
+* **JavaScript Promises** from *Google* on Udacity
+
+as well as based off of the following YouTube videos:
+
+* **JavaScript OOP Crash Course** by *Traverse Media*
+
+* **Node.js crash course** by *Traverse Media*
+* **TypeScript crash course** by *Traverse Media*
+* **Learn TypeScript in 50 Minutes** by *Codevolution*
 
 <br>
 
