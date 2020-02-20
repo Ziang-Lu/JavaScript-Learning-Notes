@@ -28,20 +28,25 @@ Person.prototype.getBirthYear = function() {
   return this.dateOfBirth.getFullYear();
 };
 
+Person.prototype.selfIntro = function() {
+  return `Hi, my name is ${this.getFullName()}`;
+};
+
 // Define class static methods
 Person.topNames = () => {
   return ['Mark', 'Lily'];
 };
 
 // Demo
-const person1 = new Person('Ziang', 'Lu', '1993-10-05');
-console.log(person1);
-console.log(person1.getFullName()); // Ziang Lu
-console.log(person1.getBirthYear()); // 1993
+const me = new Person('Ziang', 'Lu', '1993-10-05');
+console.log(me);
+console.log(me.getFullName()); // Ziang Lu
+console.log(me.getBirthYear()); // 1993
+console.log(me.selfIntro());
 console.log(Person.topNames()); // ['Mark', 'Lily']
 
 // Prototype chaining validation
-console.log(Object.getPrototypeOf(person1) === Person.prototype); // true
+console.log(Object.getPrototypeOf(me) === Person.prototype); // true
 
 console.log();
 
@@ -73,12 +78,21 @@ Student.prototype.getStudentId = function() {
   return this.studentId;
 };
 
+// Method override
+Student.prototype.selfIntro = function() {
+  const selfIntroFromSuper = Object.getPrototypeOf(
+    Student.prototype
+  ).selfIntro.call(this);
+  return `${selfIntroFromSuper}, and my student ID is ${this.studentId}`;
+};
+
 // Demo
 const stu = new Student('Ziang', 'Lu', '1993-10-05', 12345);
 console.log(stu);
 console.log(stu.getFullName()); // Kevin Lue
 console.log(stu.getBirthYear()); // 1993
 console.log(stu.getStudentId()); // 12345
+console.log(stu.selfIntro());
 console.log(Student.topNames()); // ['Mark', 'Lily']
 
 // Prototype chaining validation

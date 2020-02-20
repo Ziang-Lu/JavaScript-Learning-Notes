@@ -78,11 +78,11 @@ console.log(inc()); // 3
 
 ### Common Use Cases
 
-* Data privacy (as described above)
+* <u>Data privacy / Encapsulation</u> (as described above)
 
   For a more detailed example, check out `6_closure_demo/`
 
-* 实现partial functions:
+* <u>实现partial functions:</u>
 
   ```javascript
   const partial = (targetFunc, ...fixedArgs) => {
@@ -100,4 +100,7 @@ console.log(inc()); // 3
   console.log(add10(5)); // 15
   ```
 
+* <u>Callback functions</u>
+
+  *An example of this is when making an AJAX call to the server, using a callback to handle the response, while still maintaining the bindings in which it was created.*
 

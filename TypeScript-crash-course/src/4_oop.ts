@@ -16,6 +16,12 @@ interface PersonInterface {
    * @returns {number} birth year of this person
    */
   getBirthYear(): number;
+
+  /**
+   * Does a self-introduction.
+   * @returns {string} self-introduction of this person
+   */
+  selfIntro(): string;
 }
 
 /**
@@ -64,12 +70,17 @@ class Person implements PersonInterface {
   public getBirthYear(): number {
     return this.dateOfBirth.getFullYear();
   }
+
+  public selfIntro(): string {
+    return `Hi, my name is ${this.getFullName()}`;
+  }
 }
 
 const person1 = new Person('Ziang', 'Lu', '1993-10-05');
 console.log(person1);
 console.log(person1.getFullName()); // Ziang Lu
 console.log(person1.getBirthYear()); // 1993
+console.log(person1.selfIntro());
 console.log(Person.topNames()); // ['Mark', 'Lily']
 console.log();
 
@@ -117,6 +128,10 @@ class Student extends Person {
   public set studentID(studentId: number) {
     this.studentId = studentId;
   }
+
+  public selfIntro(): string {
+    return `${super.selfIntro()}, and my student ID is ${this.studentId}`;
+  }
 }
 
 const stu = new Student('Kevin', 'Lue', '1993-10-05', 12345);
@@ -124,4 +139,5 @@ console.log(stu);
 console.log(stu.getFullName()); // Kevin Lue
 console.log(stu.getBirthYear()); // 1993
 console.log(stu.studentID); // 12345
+console.log(stu.selfIntro());
 console.log(Student.topNames()); // ['Mark', 'Lily']

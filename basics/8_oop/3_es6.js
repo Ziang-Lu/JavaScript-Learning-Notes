@@ -42,6 +42,14 @@ class Person {
   getBirthYear() {
     return this.dob.getFullYear();
   }
+
+  /**
+   * Does a self-introduction.
+   * @returns {string} self-introduction of this person
+   */
+  selfIntro() {
+    return `Hi, my name is ${this.getFullName()}`;
+  }
 }
 
 // Inheritance
@@ -77,5 +85,9 @@ class Student extends Person {
    */
   set studentID(studentId) {
     this.studentId = studentId;
+  }
+
+  selfIntro() {
+    return `${super.selfIntro()}, and my student ID is ${this.studentId}`;
   }
 }
