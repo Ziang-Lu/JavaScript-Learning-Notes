@@ -59,28 +59,4 @@ $ tsc sample.ts
 $ tsc -w sample.ts  # Watch mode: Every time "sample.ts" file is modified, auto-generate the corresponding "sample.js" file
 ```
 
-<br>
-
-## GitHub Report Mini-Project
-
-The source code is under `github-reporter/`, and the output JavaScript files will be compiled to `out/`
-
-So we define a new `script` in `package.json` for quick run:
-
-```json
-{
-  // ...
-  "scripts": {
-    "github-report": "rm -rf out/* && tsc --outDir out/ github-reporter/*.ts && node out/index",
-    // ...
-  }
-  // ...
-}
-```
-
-To run the project, simply do
-
-```shell
-$ npm run github-report
-```
 
