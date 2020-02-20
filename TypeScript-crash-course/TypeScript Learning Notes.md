@@ -22,7 +22,7 @@
     * **`interface` definition, which may not be only used for inheritance, but for static type checking**
     * **Access modifier to class fields (`public`, `protected` `private`)**
 * `readonly` access modifier, which is essentialy like `const` in `Java`
-    
+  
 * Can (and need) be compiled to plain JavaScript
 
 <br>
@@ -52,16 +52,35 @@ $ tsc --init
 # Generates "tsconfig.json", which defines the rules to compile to JavaScript
 ```
 
-Change to
-
-```json
-"target": "es2015"
-```
-
-<br>
+Check out the `tsconfig.json` for compilation configurations
 
 ```bash
 $ tsc sample.ts
 $ tsc -w sample.ts  # Watch mode: Every time "sample.ts" file is modified, auto-generate the corresponding "sample.js" file
+```
+
+<br>
+
+## GitHub Report Mini-Project
+
+The source code is under `github-reporter/`, and the output JavaScript files will be compiled to `out/`
+
+So we define a new `script` in `package.json` for quick run:
+
+```json
+{
+  // ...
+  "scripts": {
+    "github-report": "rm -rf out/* && tsc --outDir out/ github-reporter/*.ts && node out/index",
+    // ...
+  }
+  // ...
+}
+```
+
+To run the project, simply do
+
+```shell
+$ npm run github-report
 ```
 
