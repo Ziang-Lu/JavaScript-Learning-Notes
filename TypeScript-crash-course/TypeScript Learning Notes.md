@@ -19,9 +19,10 @@
     * `enum`
   * **Modularity**
 * Compatible with ES6 features
-    * **`interface` definition, which may not be used for inheritance, but for static type checking**
-    * **Access modifier to class fields (`private`, etc.)**
-
+    * **`interface` definition, which may not be only used for inheritance, but for static type checking**
+    * **Access modifier to class fields (`public`, `protected` `private`)**
+* `readonly` access modifier, which is essentialy like `const` in `Java`
+    
 * Can (and need) be compiled to plain JavaScript
 
 <br>

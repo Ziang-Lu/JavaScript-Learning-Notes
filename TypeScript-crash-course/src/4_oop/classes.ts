@@ -1,33 +1,9 @@
-/**
- * Person interface.
- */
-interface PersonInterface {
-  // Note that we could have defined common variables here in the interface, but
-  // that would cause the variables to be "public"
-
-  /**
-   * Returns the full name of this person.
-   * @returns {string} full name
-   */
-  getFullName(): string;
-
-  /**
-   * Returns the birth year of this person.
-   * @returns {number} birth year of this person
-   */
-  getBirthYear(): number;
-
-  /**
-   * Does a self-introduction.
-   * @returns {string} self-introduction of this person
-   */
-  selfIntro(): string;
-}
+import { PersonLike } from './interfaces';
 
 /**
  * Person class.
  */
-class Person implements PersonInterface {
+export class Person implements PersonLike {
   /**
    * Static method to return the top boy name and girl name.
    * @returns {Array} top boy name and girl name as an array
@@ -38,18 +14,19 @@ class Person implements PersonInterface {
 
   /**
    * First name of this person.
+   * "readonly" is essentially like "const" in Java.
    */
-  private firstName: string;
+  private readonly firstName: string;
 
   /**
    * Last name of this person.
    */
-  private lastName: string;
+  private readonly lastName: string;
 
   /**
    * Date of birth of this person.
    */
-  private dateOfBirth: Date;
+  private readonly dateOfBirth: Date;
 
   /**
    * Constructor with parameter.
@@ -76,19 +53,11 @@ class Person implements PersonInterface {
   }
 }
 
-const person1 = new Person('Ziang', 'Lu', '1993-10-05');
-console.log(person1);
-console.log(person1.getFullName()); // Ziang Lu
-console.log(person1.getBirthYear()); // 1993
-console.log(person1.selfIntro());
-console.log(Person.topNames()); // ['Mark', 'Lily']
-console.log();
-
 // Inheritance
 /**
  * Student class.
  */
-class Student extends Person {
+export class Student extends Person {
   /**
    * Student ID of this student.
    */
@@ -133,11 +102,3 @@ class Student extends Person {
     return `${super.selfIntro()}, and my student ID is ${this.studentId}`;
   }
 }
-
-const stu = new Student('Kevin', 'Lue', '1993-10-05', 12345);
-console.log(stu);
-console.log(stu.getFullName()); // Kevin Lue
-console.log(stu.getBirthYear()); // 1993
-console.log(stu.studentID); // 12345
-console.log(stu.selfIntro());
-console.log(Student.topNames()); // ['Mark', 'Lily']

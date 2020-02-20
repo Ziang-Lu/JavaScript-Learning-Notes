@@ -30,6 +30,7 @@
     "no-console": "off",
     "no-shadow": "off",
     "no-unused-vars": "warn",
+    "no-useless-constructor": "off",
     "object-shorthand": "off",
     "prettier/prettier": [
       "error",
