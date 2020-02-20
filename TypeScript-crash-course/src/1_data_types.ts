@@ -46,7 +46,7 @@ console.log((myUnknown as string).toUpperCase()); // Need to use "type assertion
 type fixedTuple = [number, string];
 const numStrTuple: fixedTuple = [42, 'Some string'];
 
-// Actually, this is like an "enum"
+// Essentially, this is like an "enum"
 type Style = 23 | 'bold' | 'italic';
 const myFont: Style = 'italic';
 

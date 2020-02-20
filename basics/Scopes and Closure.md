@@ -44,15 +44,9 @@ console.log(x); // ReferenceError
 
 <u>-> A new execution context should be created every time you run a function.</u>
 
+* For more details about execution contexts, check out this awesome article: http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/
+
 *=> For each lexical scope, which is the scope of a function, there may be many in-memory scopes (execution contexts).*
-
-***
-
-其实本质上, 一个execution context就是一个key-value mapping, 保存着variable names -> variable values
-
-=> 而我们可以在runtime去动态track一个function的execution contexts
-
-***
 
 Check out `6_scoping_demo.js` for a simple demo
 

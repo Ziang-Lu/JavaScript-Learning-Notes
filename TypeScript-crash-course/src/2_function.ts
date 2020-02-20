@@ -1,7 +1,8 @@
 /**
  * Adds the given two numbers.
- * @param x first addend
- * @param y seond addend
+ * @param {number} x first addend
+ * @param {number} y seond addend
+ * @returns {number} sum of the given two numbers
  */
 const add = (x: number, y: number): number => {
   return x + y;
@@ -11,8 +12,9 @@ console.log(add(1, 2));
 
 /**
  * Returns the full name from the given first name and last name.
- * @param firstName first name
- * @param lastName last name
+ * @param {string} firstName first name
+ * @param {string} lastName last name
+ * @returns {string} full name
  */
 const getFullName = (firstName: string, lastName?: string): string => {
   // "?" means optional

@@ -11,7 +11,6 @@
  * @param {string} firstName first name of the person
  * @param {string} lastName last name of the person
  * @param {string} dateOfBirth date of birth of the person
- * @returns {object} newly create object
  */
 function Person(firstName, lastName, dateOfBirth) {
   // Instead of using the object created manually by us, we use "this" keyword

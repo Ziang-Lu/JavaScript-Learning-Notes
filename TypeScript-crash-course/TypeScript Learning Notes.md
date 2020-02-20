@@ -12,15 +12,16 @@
     * `null`
     * `undefined`
     * `void`  (可以是`null`或者`undefined`)
-    * `tuple`
-    * `generics`
-    * `enum`
+    * Data type combination
     * `any`
+    * `unknown`
+    * `tuple`
+    * `enum`
   * **Modularity**
 * Compatible with ES6 features
     * **`interface` definition, which may not be used for inheritance, but for static type checking**
     * **Access modifier to class fields (`private`, etc.)**
-  
+
 * Can (and need) be compiled to plain JavaScript
 
 <br>

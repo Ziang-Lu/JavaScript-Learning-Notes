@@ -1,8 +1,8 @@
 // /**
 //  * Shows a Todo object that has the given schema.
-//  * @param todo Todo object with the given schema
+//  * @param {object} todo Todo object with the given schema
 //  */
-// function showTodo(todo: { title: string; text: string }) {
+// function showTodo(todo: { title: string; text: string }): void {
 //   if (todo.text === undefined) {
 //     console.log(todo.title);
 //   } else {
@@ -21,15 +21,16 @@
  */
 interface Todo {
   title: string;
-  text?: string;
+  text?: string; // "?" means optional
   [key: string]: any; // Allow additional entries
 }
 
 /**
  * Shows the given Todo object.
- * @param todo Todo object
+ * @param {Todo} todo Todo object to show
  */
 function showTodo(todo: Todo): void {
+  // Since Todo.text is optional, it might be undefined.
   if (todo.text === undefined) {
     console.log(todo.title);
   } else {
@@ -45,13 +46,7 @@ function showTodo(todo: Todo): void {
 
 const myTodo: Todo = {
   title: 'Learn TypeScript',
-  text: 'Learn about TypeScript linting and VSCode integration'
-};
-showTodo(myTodo);
-
-const anotherTodo: Todo = {
-  title: 'Go to Supermarket',
-  text: 'Buy eggs',
+  text: 'Learn about TypeScript linting and VSCode integration',
   date: new Date()
 };
-showTodo(anotherTodo);
+showTodo(myTodo);

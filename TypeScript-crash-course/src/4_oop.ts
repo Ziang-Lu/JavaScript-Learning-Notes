@@ -24,7 +24,7 @@ interface PersonInterface {
 class Person implements PersonInterface {
   /**
    * Static method to return the top boy name and girl name.
-   * @returns top boy name and girl name as an array
+   * @returns {Array} top boy name and girl name as an array
    */
   public static topNames(): [string, string] {
     return ['Mark', 'Lily'];
@@ -47,9 +47,9 @@ class Person implements PersonInterface {
 
   /**
    * Constructor with parameter.
-   * @param firstName first name of the person
-   * @param lastName last name of the person
-   * @param dateOfBirth date of birth of the person as a string
+   * @param {string} firstName first name of the person
+   * @param {string} lastName last name of the person
+   * @param {string} dateOfBirth date of birth of the person as a string
    */
   public constructor(firstName: string, lastName: string, dateOfBirth: string) {
     this.firstName = firstName;
@@ -85,10 +85,10 @@ class Student extends Person {
 
   /**
    * Constructor with parameter.
-   * @param firstName first name of this student
-   * @param lastName last name of this student
-   * @param dateOfBirth date of birth of this student
-   * @param studentId student ID of this student
+   * @param {string} firstName first name of this student
+   * @param {string} lastName last name of this student
+   * @param {string} dateOfBirth date of birth of this student
+   * @param {number} studentId student ID of this student
    */
   public constructor(
     firstName: string,
@@ -112,7 +112,7 @@ class Student extends Person {
   /**
    * Mutator of studentId.
    * Note how this is defined as a setter method.
-   * @param studentId student ID to set
+   * @param {number} studentId student ID to set
    */
   public set studentID(studentId: number) {
     this.studentId = studentId;
