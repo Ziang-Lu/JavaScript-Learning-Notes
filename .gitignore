@@ -5,7 +5,6 @@ node_modules/
 
 # Sample folder & files
 *.txt
-out/
 test/
 
 # Project files

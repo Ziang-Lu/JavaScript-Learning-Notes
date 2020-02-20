@@ -4,7 +4,6 @@
   "description": "TypeScript crash course",
   "main": "index.js",
   "scripts": {
-    "github-report": "rm -rf out/* && tsc --outDir out/ github-reporter/*.ts && node out/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ziang Lu",
