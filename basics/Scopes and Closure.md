@@ -76,6 +76,8 @@ inc();
 console.log(inc()); // 3
 ```
 
+* For more details about how closures work under the hood, check out this awesome article: http://blog.leapoahead.com/2015/09/15/js-closure/
+
 ### Common Use Cases
 
 * <u>Data privacy / Encapsulation</u> (as described above)
