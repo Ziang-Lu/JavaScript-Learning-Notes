@@ -31,7 +31,7 @@
 
 ### TypeScript Linting
 
-Following the fules to lint plain JavaScript codes, plus the following:
+Following the rules to lint plain JavaScript codes, plus the following:
 
 ```bash
 $ npm install -g @typescript-eslint/parser @typescript-eslint/eslint-plugin
