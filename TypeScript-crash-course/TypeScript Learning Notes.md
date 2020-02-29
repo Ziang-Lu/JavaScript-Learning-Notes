@@ -41,6 +41,19 @@ $ npx install-peerdeps --dev eslint-config-typescript-airbnb-base
 
 to add additional dependencies to `package.json`
 
+Also, add the following to `.eslintrc.json`:
+
+```json
+settings: {
+  'import/resolver': {
+    node: {
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      paths: ['./src']
+    }
+  }
+},
+```
+
 ***
 
 <br>
