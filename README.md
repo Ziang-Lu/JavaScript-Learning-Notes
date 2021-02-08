@@ -3,35 +3,35 @@
 These repo contains course notes in the following courses
 
 * **Intro to JavaScript** on Udacity
-* **Object-Oriented JavaScript** from *HackReactor* on Udacity
+* **Object-Oriented JavaScript from HackReactor** on Udacity
 * **Asynchronous JavaScript Requests** on Udacity
-* **JavaScript Promises** from *Google* on Udacity
+* **JavaScript Promises from Google** on Udacity
 
 as well as based off of the following YouTube videos:
 
-* **JavaScript OOP Crash Course** by *Traverse Media*
+* **JavaScript OOP Crash Course** by Traverse Media
 
-* **Node.js crash course** by *Traverse Media*
-* **TypeScript crash course** by *Traverse Media*
-* **Learn TypeScript in 50 Minutes** by *Codevolution*
+* **Node.js crash course** by Traverse Media
+* **TypeScript crash course** by Traverse Media
+* **Learn TypeScript in 50 Minutes** by Codevolution
 
 <br>
 
 ## JavaScript Basics
 
-1. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/1_primitive_data_types.js">Primitive Data Types</a>
+1. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/basics/1_primitive_data_types.js">Primitive Data Types</a>
 
-2. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/2_conditional.js">Conditional</a>
+2. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/basics/2_conditional.js">Conditional</a>
 
-3. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/3_loop.js">Loop</a>
+3. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/basics/3_loop.js">Loop</a>
 
-4. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/4_function.js">Function</a>
+4. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/basics/4_function.js">Function</a>
 
-5. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/5_array.js">Array</a>
+5. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/basics/5_array.js">Array</a>
 
-6. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/6_scoping_demo.js">Scopes and Closures</a>
+6. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/basics/6_scoping_demo.js">Scopes and Closures</a>
 
-7. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/7_object.js">Object</a>
+7. <a href="https://github.com/Ziang-Lu/JavaScript-Learning-Notes/blob/master/basics/7_object.js">Object</a>
 
    ***
 
@@ -78,7 +78,7 @@ as well as based off of the following YouTube videos:
    const umbrella = {
      color: 'pink',
      isOpen: false,
-   
+
      open: function() {
        if (this.isOpen) {
          return 'This umbrella is already open.';
@@ -87,7 +87,7 @@ as well as based off of the following YouTube videos:
          return 'Successfully opened the umbrella!';
        }
      }
-   
+
      // If we do the following:
      // open: () => {
      //   if (this.isOpen) { // "this" binds to the outer context, which is the global object in this case, so "this.isOpen" is undefined.
@@ -98,7 +98,7 @@ as well as based off of the following YouTube videos:
      //   }
      // }
    }
-   
+
    umbrella.open(); // "this" binds to "umbrella" object
    ```
 
@@ -117,25 +117,25 @@ as well as based off of the following YouTube videos:
        // Person.prototype object, which should contain all of the methods of this
        // "functional class".
        // Also, note that Person.prototype.constructor refers back to Person
-     
+
        person.firstName = firstName;
        person.lastName = lastName;
        person.dateOfBirth = new Date(dateOfBirth);
-     
+
        return person;
      }
-     
+
      // Define methods onto [FunctionalClass].prototype object
      // => So that field lookups on a new instance will be delegated to this
      //    [FunctionalClass].prototype
      Person.prototype.getFullName = function() {
        return `${this.firstName} ${this.lastName}`;
      };
-     
+
      Person.prototype.getBirthYear = function() {
        return this.dateOfBirth.getFullYear();
      };
-     
+
      // Define class static methods
      Person.topNames = () => {
        return ['Mark', 'Lily'];
@@ -157,23 +157,23 @@ as well as based off of the following YouTube videos:
        this.lastName = lastName;
        this.dateOfBirth = new Date(dateOfBirth);
      }
-     
+
      // Define methods
      ...
-     
+
      // Define class static methods
      ...
-     
+
      // Inheritance
      function Student(firstName, lastName, dateOfBirth, studentId) {
        Person.call(this, firstName, lastName, dateOfBirth); // 继承properties
        this.studentId = studentId;
      }
-     
+
      // Inheritance的本质上是prototype chaining (继承methods)
      Student.prototype = Object.create(Person.prototype); // At this point, Student.prototype simply delegates to Person.prototype.
      Student.prototype.constructor = Student; // However, we must manually add the constructor property; otherwise calling "Student.prototype.constructor" would be delegated to Person.prototype, which results in Person.
-     
+
      // (继承static methods)
      // 由于static methods是直接定义在了Person这个"function class"本身上的, 因此为了继承
      // static methods, 还需要定义"function class"本身的prototype chaining关系, 使得
@@ -190,28 +190,28 @@ as well as based off of the following YouTube videos:
        static topNames() {
          return ['Mark', 'Lily'];
        }
-     
+
        constructor(firstName, lastName, dateOfBirth) {
          const dob = new Date(dateOfBirth);
          Object.assign(this, { firstName, lastName, dob });
        }
-     
+
        getFullName() {
          return `${this.firstName} ${this.lastName}`;
        }
-     
+
        getBirthYear() {
          return this.dob.getFullYear();
        }
      }
-     
+
      // Inheritance
      class Student extends Person {
        constructor(firstName, lastName, dateOfBirth, studentId) {
          super(firstName, lastName, dateOfBirth);
          this.studentId = studentId;
        }
-     
+
        get getStudentId() {
          return this.studentId;
        }

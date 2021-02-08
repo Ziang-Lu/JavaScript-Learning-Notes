@@ -92,7 +92,7 @@
 
 * **`Promise` (since ES6 / ES2015)**
 
-  * For usage, check out `async/2-promise/fetch_promise.js`, which contains the following code snippet, and https://github.com/Ziang-Lu/JavaScript-Learning-Notes/tree/master/ajax/3-fetch-promise
+  * For usage, check out `src/async/2-promise/fetch_promise.js`, which contains the following code snippet, and https://github.com/Ziang-Lu/JavaScript-Learning-Notes/tree/master/ajax/3-fetch-promise
 
     ```javascript
     const fetch = require('node-fetch');
