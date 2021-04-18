@@ -1,0 +1,1 @@
+../../references/promise_fetch_async_await.js

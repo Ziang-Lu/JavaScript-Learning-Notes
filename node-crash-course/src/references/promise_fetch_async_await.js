@@ -9,7 +9,6 @@ const fetch = require('node-fetch');
 // GET request
 async function fetchUsers() {
   // This "async" function returns a Promise
-
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/users');
     const users = await response.json(); // response.json() also returns a Promise
@@ -32,7 +31,6 @@ fetchUsers();
 // Post request
 async function createPost() {
   // This "async" function returns a Promise
-
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
       method: 'POST',

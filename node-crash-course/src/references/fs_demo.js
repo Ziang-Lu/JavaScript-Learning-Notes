@@ -9,7 +9,7 @@ const filename = path.join(testFolderName, 'hello.txt');
 // to as "callback hell".
 
 // Create folder
-fs.mkdir(testFolderName, null, err => {
+fs.mkdir(testFolderName, { recursive: true }, err => {
   if (err) throw err;
   console.log('Folder created.');
 

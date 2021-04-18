@@ -9,7 +9,7 @@ setTimeout(
 
 // With Promise, we want to do the same thing like this.
 
-// setTimeoutWithPromise()
+// setTimeoutWithPromise(1000)
 //   .then(console.log('This is from the "resolve()" callback of a Promise'))
 //   .catch(err => console.error(err));
 
@@ -31,19 +31,15 @@ const setTimeoutWithPromise = timeout => {
   });
 };
 
-setTimeoutWithPromise()
+setTimeoutWithPromise(1000)
   .then(console.log('This is from the "resolve()" callback of a Promise'))
   .catch(err => console.error(err));
 
 // ----------------------------------------------------------------------------
 
-const myExistHandler = () => {
-  console.log('File exists');
-};
+const myExistHandler = () => console.log('File exists');
 
-const myNotExistHandler = err => {
-  console.error(err);
-};
+const myNotExistHandler = err => console.error(err);
 
 const somePath = 'fetch_demo.js';
 

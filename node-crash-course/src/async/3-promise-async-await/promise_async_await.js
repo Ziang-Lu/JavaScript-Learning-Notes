@@ -1,10 +1,10 @@
 const fetch = require('node-fetch');
+
 const { cleanRoom, removeGarbage, winIceCream } = require('../common');
 
-// Sequential execution (chaining)
+// ===== Sequential execution (chaining) =====
 async function myRoutine() {
   // This "async" function returns a Promise
-
   try {
     let msg = await cleanRoom();
     console.log(msg);
@@ -23,12 +23,11 @@ myRoutine();
 // 使得程序looks and feels like synchronous, 虽然实际上只是syntax sugar, under the
 // hood还是asynchronous
 
-// Parallel execution
+// ===== Parallel execution =====
 
 // Example 1
 async function myRoutineParallel() {
   // This "async" function returns a Promise
-
   try {
     const messages = await Promise.all([
       cleanRoom(),

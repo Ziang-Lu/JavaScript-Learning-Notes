@@ -4,7 +4,7 @@ const { cleanRoom, removeGarbage, winIceCream } = require('../common');
 
 console.log('With asynchronous programming, this line is printed first.');
 
-// Sequential execution (chaining)
+// ===== Sequential execution (chaining) =====
 cleanRoom()
   .then(msg => {
     console.log(msg);
@@ -20,7 +20,7 @@ cleanRoom()
   })
   .catch(err => console.log(err));
 
-// Parallel execution
+// ===== Parallel execution =====
 
 // Example 1
 Promise.all([cleanRoom(), removeGarbage(), winIceCream()])
@@ -33,7 +33,7 @@ Promise.all([cleanRoom(), removeGarbage(), winIceCream()])
 // Promise.race([cleanRoom(), removeGarbage(), winIceCream()])
 //   .then(value => {
 //     console.log(value);
-//     console.log('One finished');
+//     console.log('First one finished');
 //   })
 //   .catch(err => console.log(err));
 

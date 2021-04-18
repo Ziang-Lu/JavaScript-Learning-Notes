@@ -230,13 +230,13 @@ as well as based off of the following YouTube videos:
 
    Check out https://github.com/Ziang-Lu/JavaScript-Learning-Notes/tree/master/ajax/2-jQuery-ajax-callback
 
-3. `fetch()-API`, through `Promise`
+3. `Promise`-based, `fetch()-API`
 
-   Check out https://github.com/Ziang-Lu/JavaScript-Learning-Notes/tree/master/ajax/3-fetch-promise
+   Check out https://github.com/Ziang-Lu/JavaScript-Learning-Notes/tree/master/ajax/3-promise-fetch
 
-4. `fetch()-API`, through `async/await` syntax
+   Through `async/await` syntax
 
-   Check out https://github.com/Ziang-Lu/JavaScript-Learning-Notes/tree/master/ajax/4-fetch-async-await
+   Check out https://github.com/Ziang-Lu/JavaScript-Learning-Notes/tree/master/ajax/4-promise-fetch-async-await
 
 <br>
 

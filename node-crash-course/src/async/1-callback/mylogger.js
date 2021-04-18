@@ -1,5 +1,3 @@
-// TODO: Read docs about "uuidv4" module
-
 const EventEmitter = require('events');
 const fs = require('fs');
 const path = require('path');
@@ -14,7 +12,7 @@ class MyLogger extends EventEmitter {
    * @param {string} msg message to log
    */
   log(msg) {
-    // Emit a "message" event (to self)
+    // Emit a "message" event (to itself)
     this.emit('message', { id: uuidv4(), message: msg });
     // The second parameter here (the object) will be passed to the "message"
     // event listener.
@@ -25,7 +23,6 @@ const txtLogger = new MyLogger();
 // Since MyLogger extends EventEmitter, we can register a callback function
 // on it for "message" event, specifically on this txtLogger object.
 txtLogger.on('message', data => {
-  // "message" event listener
   fs.appendFile(
     path.join(__dirname, 'logs.txt'),
     JSON.stringify(data, null, 2)
