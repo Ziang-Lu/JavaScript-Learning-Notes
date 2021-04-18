@@ -41,7 +41,7 @@
     e.preventDefault();
     searchedForText = searchField.value;
 
-    // fetch()-API returns a promise
+    // fetch()-API returns a Promise
 
     // Unsplash async request
     fetch(
